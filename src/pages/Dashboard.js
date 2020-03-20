@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getSumOfStats, getAllStatsWithCountry } from '../actions/globalStat';
 
+import spinnerPath from '../assets/spinner.gif';
+import Spinner from '../layouts/Spinner';
+
 const Dashboard = ({
   stats: {
     allStats: { cases, deaths, recovered },
@@ -26,15 +29,18 @@ const Dashboard = ({
       color: '#26C281'
     },
     recoveredHeading: {
-      color: '#111'
+      color: '#222'
     },
     deathHeading: {
-      color: '#9D2933'
-    }
+      color: '#C3272B'
+    },
+    confirmedAlert: { position: 'absolute', top: '2rem', right: '2rem', background: '#22A7F0', color: '#fff', padding: '.8rem 1.2rem' },
+    deathAlert: { position: 'absolute', top: '6rem', right: '2rem', background: '#C3272B', color: '#fff', padding: '.8rem 1.2rem' }
   };
 
   const [activeStats, setActiveStats] = useState(null);
-  const [newStats, setNewStats] = useState(null);
+  const [newConfirmedStats, setNewConfirmedStats] = useState(null);
+  const [newDeathStats, setNewDeathStats] = useState(null);
 
   useEffect(() => {
     getSumOfStats();
@@ -46,13 +52,41 @@ const Dashboard = ({
       activeCases[0]
     );
 
+    const newConfirmedStats = stats.map(stat => stat.todayCases);
+    const totalTodayConfirmedStats = newConfirmedStats.reduce(
+      (sum, num) => (sum += num),
+      newConfirmedStats[0]
+    );
+
+    const newDeathStats = stats.map(stat => stat.todayDeaths);
+    const totalTodayDeathStats = newDeathStats.reduce(
+      (sum, num) => (sum += num),
+      newDeathStats[0]
+    );
+
     setActiveStats(loading ? null : totalActiveCases);
-  }, [getSumOfStats, getAllStatsWithCountry, loading]);
+    setNewConfirmedStats(loading ? null : totalTodayConfirmedStats);
+    setNewDeathStats(loading ? null : totalTodayDeathStats);
+  }, [getSumOfStats, getAllStatsWithCountry, loading, stats]);
+
+  const appendNewConfirmedStats = newConfirmedStats !== null && !loading && (
+    <div style={useStyles.confirmedAlert}>
+      <span>New Confirmed Stats: {newConfirmedStats}</span>
+    </div>
+  );
+
+  const appendNewDeathStats = newDeathStats !== null && !loading && (
+    <div style={useStyles.deathAlert}>
+      <span>New Death Stats: {newDeathStats}</span>
+    </div>
+  );
 
   return loading ? (
-    <h3>Loading...</h3>
+    <Spinner path={spinnerPath} width='100px' />
   ) : (
     <div className='Dashboard'>
+      {appendNewConfirmedStats}
+      {appendNewDeathStats}
       <div className='top'>
         <h1
           style={(useStyles.caseHeading, useStyles.confirmedHeading)}
@@ -68,8 +102,6 @@ const Dashboard = ({
         </h1>
       </div>
       <br />
-      <hr />
-      <br />
       <br />
       <div className='btn-group'>
         <Link className='btn-dashboard btn-local-cases' to='/local-cases'>
@@ -80,8 +112,6 @@ const Dashboard = ({
         </Link>
       </div>
       <br />
-      <br />
-      <hr />
       <br />
       <div className='bottom'>
         <h1

@@ -1,16 +1,14 @@
 import React from 'react';
 
-import Earth from '../assets/earth.gif';
-
-const Spinner = () => (
+const Spinner = ({ path, width }) => (
   <img
     style={{
       display: 'block',
       margin: 'auto',
       textAlign: 'center',
-      width: '30px'
+      width: { width }
     }}
-    src={Earth}
+    src={path}
     alt=''
   />
 );

@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import path from '../assets/earth.gif';
 import Earth from './Spinner';
 
 const AppHeader = () => {
@@ -8,7 +9,7 @@ const AppHeader = () => {
     navLink: {
       textDecoration: 'none',
       color: '#fff',
-      fontSize: '1.3rem',
+      fontSize: '1.5rem',
       fontWeight: 'bold'
     }
   };
@@ -19,7 +20,9 @@ const AppHeader = () => {
         {' '}
         COVID-19 TRACKER{' '}
       </NavLink>
-      <Earth />
+      <br />
+      <br />
+      <Earth path={path} width={'20px'} />
     </div>
   );
 };
