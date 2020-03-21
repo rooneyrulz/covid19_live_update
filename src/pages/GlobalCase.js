@@ -8,6 +8,8 @@ import {
   getStatByCountry
 } from '../actions/globalStat';
 
+import TopStat from '../components/TopStat';
+import BottomStat from '../components/BottomStat';
 import Spinner from '../layouts/Spinner';
 
 const GlobalCase = ({
@@ -15,14 +17,6 @@ const GlobalCase = ({
   getAllStatsWithCountry,
   getStatByCountry
 }) => {
-  const [countries, setCountries] = useState([]);
-
-  useEffect(() => {
-    getAllStatsWithCountry();
-
-    setCountries(() => (loading ? [] : stats.map(stat => stat.country)));
-  }, [getAllStatsWithCountry, loading, stats]);
-
   const useStyles = {
     countrySelect: {
       width: '400px',
@@ -31,66 +25,38 @@ const GlobalCase = ({
       border: 'none',
       outline: 'none',
       boxShadow: '1px 1px 1px 1px #111'
-    },
-    caseHeading: {
-      fontWeight: '100'
-    },
-    confirmedHeading: {
-      color: '#22A7F0'
-    },
-    activeHeading: {
-      color: '#26C281'
-    },
-    recoveredHeading: {
-      color: '#222'
-    },
-    deathHeading: {
-      color: '#C3272B'
-    },
-    confirmedAlert: {
-      position: 'absolute',
-      top: '2rem',
-      right: '2rem',
-      background: '#22A7F0',
-      color: '#fff',
-      padding: '.7rem 1.2rem',
-      boxShadow: '1px 1px 1px 1px #111'
-    },
-    deathAlert: {
-      position: 'absolute',
-      top: '6rem',
-      right: '2rem',
-      background: '#C3272B',
-      color: '#fff',
-      padding: '.7rem 1.2rem',
-      boxShadow: '1px 1px 1px 1px #111'
     }
   };
+
+  const [countries, setCountries] = useState([]);
+
+  useEffect(() => {
+    getAllStatsWithCountry();
+    setCountries(() => (loading ? [] : stats.map(stat => stat.country)));
+  }, [getAllStatsWithCountry, loading, stats]);
+
+  useEffect(() => {
+    getStatByCountry('China');
+  }, [getStatByCountry]);
 
   const onChange = e => {
     getStatByCountry(e.target.value);
   };
 
-  const { cases, deaths, recovered, active } = stat;
+  const { country, cases, deaths, recovered, active } = stat;
 
   return loading ? (
     <Spinner />
   ) : (
     <div className='GlobalCases'>
-      <div className='top'>
-        <h1
-          style={(useStyles.caseHeading, useStyles.confirmedHeading)}
-          className='case-heading confirmed-heading'
-        >
-          Confirmed: {cases}
-        </h1>
-        <h1
-          style={(useStyles.caseHeading, useStyles.activeHeading)}
-          className='case-heading active-heading'
-        >
-          Active: {active}
-        </h1>
-      </div>
+      <h2>{country}</h2>
+      <hr />
+      <br />
+      {loading ? (
+        <h4>Loading...</h4>
+      ) : (
+        <TopStat cases={cases} active={active} />
+      )}
       <br />
       <br />
       <select onChange={e => onChange(e)} style={useStyles.countrySelect}>
@@ -102,20 +68,11 @@ const GlobalCase = ({
       </select>
       <br />
       <br />
-      <div className='bottom'>
-        <h1
-          style={(useStyles.caseHeading, useStyles.recoveredHeading)}
-          className='case-heading recovered-heading'
-        >
-          Recovered: {recovered}
-        </h1>
-        <h1
-          style={(useStyles.caseHeading, useStyles.deathHeading)}
-          className='case-heading death-heading'
-        >
-          Death: {deaths}
-        </h1>
-      </div>
+      {loading ? (
+        <h4>Loading...</h4>
+      ) : (
+        <BottomStat deaths={deaths} recovered={recovered} />
+      )}
     </div>
   );
 };

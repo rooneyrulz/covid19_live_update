@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getSumOfStats, getAllStatsWithCountry } from '../actions/globalStat';
 
+import TopStat from '../components/TopStat';
+import BottomStat from '../components/BottomStat';
 import Spinner from '../layouts/Spinner';
 
 const Dashboard = ({
@@ -18,21 +20,6 @@ const Dashboard = ({
   getAllStatsWithCountry
 }) => {
   const useStyles = {
-    caseHeading: {
-      fontWeight: '100'
-    },
-    confirmedHeading: {
-      color: '#22A7F0'
-    },
-    activeHeading: {
-      color: '#26C281'
-    },
-    recoveredHeading: {
-      color: '#222'
-    },
-    deathHeading: {
-      color: '#C3272B'
-    },
     confirmedAlert: {
       position: 'absolute',
       top: '2rem',
@@ -102,20 +89,7 @@ const Dashboard = ({
     <div className='Dashboard'>
       {appendNewConfirmedStats}
       {appendNewDeathStats}
-      <div className='top'>
-        <h1
-          style={(useStyles.caseHeading, useStyles.confirmedHeading)}
-          className='case-heading confirmed-heading'
-        >
-          Confirmed: {cases}
-        </h1>
-        <h1
-          style={(useStyles.caseHeading, useStyles.activeHeading)}
-          className='case-heading active-heading'
-        >
-          Active: {activeStats}
-        </h1>
-      </div>
+      <TopStat cases={cases} active={activeStats} />
       <br />
       <br />
       <div className='btn-group'>
@@ -128,20 +102,7 @@ const Dashboard = ({
       </div>
       <br />
       <br />
-      <div className='bottom'>
-        <h1
-          style={(useStyles.caseHeading, useStyles.recoveredHeading)}
-          className='case-heading recovered-heading'
-        >
-          Recovered: {recovered}
-        </h1>
-        <h1
-          style={(useStyles.caseHeading, useStyles.deathHeading)}
-          className='case-heading death-heading'
-        >
-          Death: {deaths}
-        </h1>
-      </div>
+      <BottomStat deaths={deaths} recovered={recovered} />
     </div>
   );
 };
