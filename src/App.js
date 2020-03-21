@@ -7,11 +7,9 @@ import { Provider } from 'react-redux';
 import Store from './store';
 
 // COMPONENTS
+import Routes from './components/routing/Routes';
 import AppHeader from './layouts/AppHeader';
 import AppFooter from './layouts/AppFooter';
-import Dashboard from './pages/Dashboard';
-import LocalCase from './pages/LocalCase';
-import GlobalCase from './pages/GlobalCase';
 
 const App = () => {
   return (
@@ -24,9 +22,7 @@ const App = () => {
             </header>
             <main className='App-main'>
               <Switch>
-                <Route exact path='/' component={Dashboard} />
-                <Route exact path='/local-cases' component={LocalCase} />
-                <Route exact path='/global-cases' component={GlobalCase} />
+                <Route component={Routes} />
               </Switch>
             </main>
             <footer className='App-footer'>
