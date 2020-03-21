@@ -32,3 +32,21 @@ export const getAllStatsWithCountry = () => async dispatch => {
     console.log(error);
   }
 };
+
+export const getStatByCountry = country => async dispatch => {
+  const config = {
+    header: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  try {
+    const { data } = await axios.get(
+      `${globalURI}/countries/${country}`,
+      config
+    );
+    dispatch({ type: STAT, payload: data });
+  } catch (error) {
+    console.log(error);
+  }
+};

@@ -3,27 +3,42 @@ import PropTypes from 'prop-types';
 
 // REDUX
 import { connect } from 'react-redux';
-import { getAllStatsWithCountry } from '../actions/globalStat';
+import {
+  getAllStatsWithCountry,
+  getStatByCountry
+} from '../actions/globalStat';
 
 import Spinner from '../layouts/Spinner';
 
-const GlobalCase = ({ stats: { stats, loading }, getAllStatsWithCountry }) => {
-  const useStyles = {
-    countrySelect: {
-      width: '400px',
-      height: '45px'
-    }
-  };
-
+const GlobalCase = ({
+  stats: { stats, stat, loading },
+  getAllStatsWithCountry,
+  getStatByCountry
+}) => {
   const [country, setCountry] = useState([]);
 
   useEffect(() => {
     getAllStatsWithCountry();
+    !loading && getStatByCountry('China');
 
     setCountry(() => (loading ? [] : stats.map(stat => stat.country)));
-  }, [getAllStatsWithCountry, loading, stats]);
+  }, [getAllStatsWithCountry, getStatByCountry, loading, stats]);
 
-  const onChange = e => console.log(e.target.value);
+  const useStyles = {
+    countrySelect: {
+      width: '400px',
+      height: '50px',
+      fontSize: '1.4rem',
+      border: 'none',
+      outline: 'none',
+      boxShadow: '1px 1px 1px 1px #111'
+    }
+  };
+
+  const onChange = e => {
+    getStatByCountry(e.target.value);
+    console.log(stat);
+  };
 
   return loading ? (
     <Spinner />
@@ -44,11 +59,15 @@ const GlobalCase = ({ stats: { stats, loading }, getAllStatsWithCountry }) => {
 
 GlobalCase.propTypes = {
   stats: PropTypes.object.isRequired,
-  getAllStatsWithCountry: PropTypes.func.isRequired
+  getAllStatsWithCountry: PropTypes.func.isRequired,
+  getStatByCountry: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   stats: state.globalStat
 });
 
-export default connect(mapStateToProps, { getAllStatsWithCountry })(GlobalCase);
+export default connect(mapStateToProps, {
+  getAllStatsWithCountry,
+  getStatByCountry
+})(GlobalCase);
