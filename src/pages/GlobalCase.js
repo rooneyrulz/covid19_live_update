@@ -52,11 +52,7 @@ const GlobalCase = ({
       <h2>{country}</h2>
       <hr />
       <br />
-      {loading ? (
-        <h4>Loading...</h4>
-      ) : (
-        <TopStat cases={cases} active={active} />
-      )}
+      <TopStat cases={cases} active={active} />
       <br />
       <br />
       <select onChange={e => onChange(e)} style={useStyles.countrySelect}>
@@ -68,11 +64,7 @@ const GlobalCase = ({
       </select>
       <br />
       <br />
-      {loading ? (
-        <h4>Loading...</h4>
-      ) : (
-        <BottomStat deaths={deaths} recovered={recovered} />
-      )}
+      <BottomStat deaths={deaths} recovered={recovered} />
     </div>
   );
 };
