@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 // REDUX
 import { connect } from 'react-redux';
@@ -8,6 +7,7 @@ import { getSumOfStats, getAllStatsWithCountry } from '../actions/globalStat';
 
 import TopStat from '../components/TopStat';
 import BottomStat from '../components/BottomStat';
+import DashboardAction from '../components/DashboardAction';
 import Spinner from '../layouts/Spinner';
 
 const Dashboard = ({
@@ -92,14 +92,7 @@ const Dashboard = ({
       <TopStat cases={cases} active={activeStats} />
       <br />
       <br />
-      <div className='btn-group'>
-        <Link className='btn-dashboard btn-local-cases' to='/local-cases'>
-          Local Cases
-        </Link>
-        <Link className='btn-dashboard btn-global-cases' to='/global-cases'>
-          Global Cases
-        </Link>
-      </div>
+      <DashboardAction />
       <br />
       <br />
       <BottomStat deaths={deaths} recovered={recovered} />
