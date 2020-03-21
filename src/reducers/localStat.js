@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        stats: payload
+        hospitalStats: payload
       };
 
     case GET_ERROR:

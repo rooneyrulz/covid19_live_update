@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BottomStat = ({ deaths, recovered }) => {
+const BottomStat = ({ deaths, recovered, local = false }) => {
   const useStyles = {
     caseHeading: {
       fontWeight: '100'
@@ -42,7 +42,7 @@ const BottomStat = ({ deaths, recovered }) => {
         style={(useStyles.caseHeading, useStyles.recoveredHeading)}
         className='case-heading recovered-heading'
       >
-        Recovered: {recovered}
+        Recovered {local && '& Discharged'}: {recovered}
       </h1>
       <h1
         style={(useStyles.caseHeading, useStyles.deathHeading)}

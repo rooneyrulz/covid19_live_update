@@ -3,12 +3,17 @@ import PropTypes from 'prop-types';
 
 // REDUX
 import { connect } from 'react-redux';
+import { getLocalStats, getLocalHospitalData } from '../actions/localStat';
 
 import TopStat from '../components/TopStat';
 import BottomStat from '../components/BottomStat';
 import Spinner from '../layouts/Spinner';
 
-const LocalCase = () => {
+const LocalCase = ({
+  stat: { loading, allStats, hospitalStats },
+  getLocalStats,
+  getLocalHospitalData
+}) => {
   const useStyles = {
     countrySelect: {
       width: '400px',
@@ -20,26 +25,69 @@ const LocalCase = () => {
     }
   };
 
+  const [hospitals, setHospitals] = useState([]);
+
+  useEffect(() => {
+    getLocalStats();
+    getLocalHospitalData();
+
+    const hospitalList = hospitalStats.map(hospital => {
+      return { id: hospital.hospital.id, name: hospital.hospital.name };
+    });
+    setHospitals(() => (loading ? [] : hospitalList));
+  }, [getLocalStats, getLocalHospitalData, hospitalStats, loading]);
+
   const onChange = e => {};
 
-  return (
+  const {
+    update_date_time,
+    local_total_cases,
+    local_new_cases,
+    local_total_number_of_individuals_in_hospitals,
+    local_deaths,
+    local_recovered
+  } = allStats;
+
+  return loading ? (
+    <Spinner />
+  ) : (
     <div className='LocalCases'>
-      <TopStat />
+      <TopStat
+        cases={local_total_cases}
+        active={local_total_cases - local_recovered}
+      />
+      <BottomStat
+        local={true}
+        deaths={local_deaths}
+        recovered={local_recovered}
+      />
       <br />
+      <hr />
       <br />
-      <select
-        onChange={e => onChange(e)}
-        style={useStyles.countrySelect}
-      ></select>
+      <h3>Hospital Stats</h3>
       <br />
-      <br />
-      <BottomStat />
+      <select onChange={e => onChange(e)} style={useStyles.countrySelect}>
+        {hospitals.map(hospital => (
+          <option key={hospital.id} value={hospital.id}>
+            {hospital.name}
+          </option>
+        ))}
+      </select>
     </div>
   );
 };
 
-LocalCase.propTypes = {};
+LocalCase.propTypes = {
+  stat: PropTypes.object.isRequired,
+  getLocalStats: PropTypes.func.isRequired,
+  getLocalHospitalData: PropTypes.func.isRequired
+};
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  stat: state.localStat
+});
 
-export default connect(mapStateToProps, {})(LocalCase);
+export default connect(mapStateToProps, {
+  getLocalStats,
+  getLocalHospitalData
+})(LocalCase);
