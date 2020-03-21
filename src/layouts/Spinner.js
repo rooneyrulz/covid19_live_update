@@ -1,6 +1,7 @@
 import React from 'react';
+import spinnerPath from '../assets/spinner.gif';
 
-const Spinner = ({ path, width }) => (
+const Spinner = ({ path = spinnerPath, width = '100px' }) => (
   <img
     style={{
       display: 'block',

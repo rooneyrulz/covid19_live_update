@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getSumOfStats, getAllStatsWithCountry } from '../actions/globalStat';
 
-import spinnerPath from '../assets/spinner.gif';
 import Spinner from '../layouts/Spinner';
 
 const Dashboard = ({
@@ -34,8 +33,24 @@ const Dashboard = ({
     deathHeading: {
       color: '#C3272B'
     },
-    confirmedAlert: { position: 'absolute', top: '2rem', right: '2rem', background: '#22A7F0', color: '#fff', padding: '.8rem 1.2rem' },
-    deathAlert: { position: 'absolute', top: '6rem', right: '2rem', background: '#C3272B', color: '#fff', padding: '.8rem 1.2rem' }
+    confirmedAlert: {
+      position: 'absolute',
+      top: '2rem',
+      right: '2rem',
+      background: '#22A7F0',
+      color: '#fff',
+      padding: '.7rem 1.2rem',
+      boxShadow: '1px 1px 1px 1px #111'
+    },
+    deathAlert: {
+      position: 'absolute',
+      top: '6rem',
+      right: '2rem',
+      background: '#C3272B',
+      color: '#fff',
+      padding: '.7rem 1.2rem',
+      boxShadow: '1px 1px 1px 1px #111'
+    }
   };
 
   const [activeStats, setActiveStats] = useState(null);
@@ -71,18 +86,18 @@ const Dashboard = ({
 
   const appendNewConfirmedStats = newConfirmedStats !== null && !loading && (
     <div style={useStyles.confirmedAlert}>
-      <span>New Confirmed Stats: {newConfirmedStats}</span>
+      <span>New Confirmed Stats: +{newConfirmedStats}</span>
     </div>
   );
 
   const appendNewDeathStats = newDeathStats !== null && !loading && (
     <div style={useStyles.deathAlert}>
-      <span>New Death Stats: {newDeathStats}</span>
+      <span>New Death Stats: +{newDeathStats}</span>
     </div>
   );
 
   return loading ? (
-    <Spinner path={spinnerPath} width='100px' />
+    <Spinner />
   ) : (
     <div className='Dashboard'>
       {appendNewConfirmedStats}
