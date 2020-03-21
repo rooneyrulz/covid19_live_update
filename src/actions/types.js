@@ -1,9 +1,9 @@
 export const LOADING = 'LOADING';
-export const ALL_STATS = 'ALL_STATS';
-export const STATS = 'STATS';
-export const STAT = 'STAT';
-export const HOSPITAL_STATS = 'HOSPITAL_STATS';
-export const CLEAR_STAT = 'CLEAR_STAT';
-export const STAT_ERROR = 'STAT_ERROR';
+export const GET_ALL_GLOBAL_STAT = 'GET_ALL_GLOBAL_STAT';
+export const GET_GLOBAL_STATS = 'GET_GLOBAL_STATS';
+export const GET_GLOBAL_STAT = 'GET_GLOBAL_STAT';
+export const GET_ALL_LOCAL_STAT = 'GET_LOCAL_STAT';
+export const GET_LOCAL_HOSPITAL_STATS = 'GET_LOCAL_HOSPITAL_STATS';
+export const GET_ERROR = 'GET_ERROR';
 export const SET_ALERT = 'SET_ALERT';
 export const REMOVE_ALERT = 'REMOVE_ALERT';

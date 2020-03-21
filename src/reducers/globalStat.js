@@ -1,4 +1,9 @@
-import { ALL_STATS, STAT, STATS, STAT_ERROR } from '../actions/types';
+import {
+  GET_ALL_GLOBAL_STAT,
+  GET_GLOBAL_STATS,
+  GET_GLOBAL_STAT,
+  GET_ERROR
+} from '../actions/types';
 
 const initialState = {
   loading: true,
@@ -12,28 +17,28 @@ export default (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case ALL_STATS:
+    case GET_ALL_GLOBAL_STAT:
       return {
         ...state,
         loading: false,
         allStats: payload
       };
 
-    case STATS:
+    case GET_GLOBAL_STATS:
       return {
         ...state,
         loading: false,
         stats: payload
       };
 
-    case STAT:
+    case GET_GLOBAL_STAT:
       return {
         ...state,
         loading: false,
         stat: payload
       };
 
-    case STAT_ERROR:
+    case GET_ERROR:
       return {
         ...state,
         loading: false,

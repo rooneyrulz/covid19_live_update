@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { ALL_STATS, STATS, STAT, STAT_ERROR } from './types';
+import {
+  GET_ALL_GLOBAL_STAT,
+  GET_GLOBAL_STATS,
+  GET_GLOBAL_STAT,
+  GET_ERROR
+} from './types';
 
 const globalURI = 'https://corona.lmao.ninja';
 
@@ -12,7 +17,7 @@ export const getSumOfStats = () => async dispatch => {
 
   try {
     const { data } = await axios.get(`${globalURI}/all`, config);
-    dispatch({ type: ALL_STATS, payload: data });
+    dispatch({ type: GET_ALL_GLOBAL_STAT, payload: data });
   } catch (error) {
     console.log(error);
   }
@@ -27,7 +32,7 @@ export const getAllStatsWithCountry = () => async dispatch => {
 
   try {
     const { data } = await axios.get(`${globalURI}/countries`, config);
-    dispatch({ type: STATS, payload: data });
+    dispatch({ type: GET_GLOBAL_STATS, payload: data });
   } catch (error) {
     console.log(error);
   }
@@ -45,7 +50,7 @@ export const getStatByCountry = country => async dispatch => {
       `${globalURI}/countries/${country}`,
       config
     );
-    dispatch({ type: STAT, payload: data });
+    dispatch({ type: GET_GLOBAL_STAT, payload: data });
   } catch (error) {
     console.log(error);
   }
