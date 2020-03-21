@@ -7,6 +7,7 @@ import { getLocalStats, getLocalHospitalData } from '../actions/localStat';
 
 import TopStat from '../components/TopStat';
 import BottomStat from '../components/BottomStat';
+import SelectOption from '../components/SelectOption';
 import Spinner from '../layouts/Spinner';
 
 const LocalCase = ({
@@ -68,9 +69,11 @@ const LocalCase = ({
       <br />
       <select onChange={e => onChange(e)} style={useStyles.countrySelect}>
         {hospitals.map(hospital => (
-          <option key={hospital.id} value={hospital.id}>
-            {hospital.name}
-          </option>
+          <SelectOption
+            key={hospital.id}
+            value={hospital.id}
+            text={hospital.name}
+          />
         ))}
       </select>
     </div>

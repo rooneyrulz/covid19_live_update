@@ -10,6 +10,7 @@ import {
 
 import TopStat from '../components/TopStat';
 import BottomStat from '../components/BottomStat';
+import SelectOption from '../components/SelectOption';
 import Spinner from '../layouts/Spinner';
 
 const GlobalCase = ({
@@ -57,9 +58,7 @@ const GlobalCase = ({
       <br />
       <select onChange={e => onChange(e)} style={useStyles.countrySelect}>
         {countries.map(country => (
-          <option key={country} value={country}>
-            {country}
-          </option>
+          <SelectOption key={country} value={country} text={country} />
         ))}
       </select>
       <br />
