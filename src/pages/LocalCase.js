@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 // REDUX
 import { connect } from 'react-redux';
-import { getLocalStats, getLocalHospitalData } from '../actions/localStat';
+import { getLocalStats } from '../actions/localStat';
 
 import TopStat from '../components/TopStat';
 import BottomStat from '../components/BottomStat';
@@ -13,8 +13,7 @@ import Spinner from '../layouts/Spinner';
 
 const LocalCase = ({
   stat: { loading, allStats, hospitalStats },
-  getLocalStats,
-  getLocalHospitalData
+  getLocalStats
 }) => {
   const useStyles = {
     countrySelect: {
@@ -31,13 +30,12 @@ const LocalCase = ({
 
   useEffect(() => {
     getLocalStats();
-    getLocalHospitalData();
 
     const hospitalList = hospitalStats.map(hospital => {
       return { id: hospital.hospital.id, name: hospital.hospital.name };
     });
     setHospitals(() => (loading ? [] : hospitalList));
-  }, [getLocalStats, getLocalHospitalData, hospitalStats, loading]);
+  }, [getLocalStats, hospitalStats, loading]);
 
   const onChange = e => {};
 
@@ -56,10 +54,11 @@ const LocalCase = ({
   ) : (
     <div className='LocalCases'>
       <Alert type='confirmed' cases={local_new_cases} />
-      <Alert cases={local_new_deaths} />
+      <Alert type='death' cases={local_new_deaths} />
       <Alert
         local={true}
-        cases={local_total_number_of_individuals_in_hospitals}
+        type='suspected'
+        suspectedCases={local_total_number_of_individuals_in_hospitals}
       />
       <TopStat
         cases={local_total_cases}
@@ -69,6 +68,7 @@ const LocalCase = ({
         local={true}
         deaths={local_deaths}
         recovered={local_recovered}
+        updated={update_date_time}
       />
       <br />
       <hr />
@@ -90,8 +90,7 @@ const LocalCase = ({
 
 LocalCase.propTypes = {
   stat: PropTypes.object.isRequired,
-  getLocalStats: PropTypes.func.isRequired,
-  getLocalHospitalData: PropTypes.func.isRequired
+  getLocalStats: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -99,6 +98,5 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, {
-  getLocalStats,
-  getLocalHospitalData
+  getLocalStats
 })(LocalCase);

@@ -16,6 +16,11 @@ export const getLocalStats = () => async dispatch => {
 
   try {
     const { data } = await axios.get(`${localURI}`, config);
+    dispatch({
+      type: GET_LOCAL_HOSPITAL_STATS,
+      payload: data.data.hospital_data
+    });
+
     delete data.data['hospital_data'];
     dispatch({ type: GET_ALL_LOCAL_STAT, payload: data.data });
   } catch (error) {
@@ -23,20 +28,16 @@ export const getLocalStats = () => async dispatch => {
   }
 };
 
-export const getLocalHospitalData = () => async dispatch => {
-  const config = {
-    header: {
-      'Content-Type': 'application/json'
-    }
-  };
+// export const getLocalHospitalData = () => async dispatch => {
+//   const config = {
+//     header: {
+//       'Content-Type': 'application/json'
+//     }
+//   };
 
-  try {
-    const { data } = await axios.get(`${localURI}`, config);
-    dispatch({
-      type: GET_LOCAL_HOSPITAL_STATS,
-      payload: data.data.hospital_data
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
+//   try {
+//     const { data } = await axios.get(`${localURI}`, config);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };

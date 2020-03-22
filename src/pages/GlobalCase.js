@@ -60,7 +60,7 @@ const GlobalCase = ({
   ) : (
     <div className='GlobalCases'>
       <Alert type='confirmed' cases={todayCases} />
-      <Alert cases={todayDeaths} />
+      <Alert type='death' cases={todayDeaths} />
       <h2>{country}</h2>
       <hr />
       <br />

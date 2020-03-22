@@ -1,6 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
-const Alert = ({ type = null, cases = null, local = false }) => {
+const Alert = ({
+  type = null,
+  cases = null,
+  suspectedCases = null,
+  local = false
+}) => {
   const useStyles = {
     confirmedAlert: {
       position: 'absolute',
@@ -33,21 +38,24 @@ const Alert = ({ type = null, cases = null, local = false }) => {
       boxShadow: '1px 1px 1px 1px #111'
     }
   };
-  return type === 'confirmed' ? (
-    <div className='alert' style={useStyles.confirmedAlert}>
-      <span>New Confirmed Stats: +{cases}</span>
-    </div>
-  ) : (
-    <Fragment>
-      <div className='alert' style={useStyles.deathAlert}>
-        <span>New Deaths: +{cases}</span>
-      </div>
-      {local && (
-        <div className='alert' style={useStyles.suspectedAlert}>
-          <span>Total Suspected Cases: +{cases}</span>
+  return (
+    <div className='alert'>
+      {type === 'confirmed' && (
+        <div className='alert' style={useStyles.confirmedAlert}>
+          <span>New Confirmed Stats: +{cases}</span>
         </div>
       )}
-    </Fragment>
+      {type === 'death' && (
+        <div className='alert' style={useStyles.deathAlert}>
+          <span>New Deaths: +{cases}</span>
+        </div>
+      )}
+      {local && type === 'suspected' && (
+        <div className='alert' style={useStyles.suspectedAlert}>
+          <span>Total Suspected Cases: +{suspectedCases}</span>
+        </div>
+      )}
+    </div>
   );
 };
 
