@@ -8,6 +8,7 @@ import { getLocalStats } from '../actions/localStat';
 import TopStat from '../components/TopStat';
 import BottomStat from '../components/BottomStat';
 import SelectOption from '../components/SelectOption';
+import HospitalStat from '../components/HospitalStat';
 import Alert from '../layouts/Alert';
 import Spinner from '../layouts/Spinner';
 
@@ -27,6 +28,7 @@ const LocalCase = ({
   };
 
   const [hospitals, setHospitals] = useState([]);
+  const [hospitaldata, setHospitalData] = useState({});
 
   useEffect(() => {
     getLocalStats();
@@ -35,9 +37,19 @@ const LocalCase = ({
       return { id: hospital.hospital.id, name: hospital.hospital.name };
     });
     setHospitals(() => (loading ? [] : hospitalList));
+
+    const filterHospital =
+      !loading &&
+      hospitalStats.find(hospital => hospital.hospital_id.toString() === '1');
+    setHospitalData(() => (loading ? {} : filterHospital));
   }, [getLocalStats, hospitalStats, loading]);
 
-  const onChange = e => {};
+  const onChange = e => {
+    const filterHospital = hospitalStats.find(
+      hospital => hospital.hospital_id.toString() === e.target.value
+    );
+    setHospitalData(() => (loading ? {} : filterHospital));
+  };
 
   const {
     update_date_time,
@@ -48,6 +60,13 @@ const LocalCase = ({
     local_deaths,
     local_recovered
   } = allStats;
+
+  const {
+    treatment_total,
+    treatment_local,
+    treatment_foreign,
+    hospital
+  } = hospitaldata;
 
   return loading ? (
     <Spinner />
@@ -77,6 +96,15 @@ const LocalCase = ({
       <br />
       <h3>Hospital Stats</h3>
       <br />
+      {hospital && (
+        <HospitalStat
+          name={hospital.name}
+          treatment_total={treatment_total}
+          treatment_local={treatment_local}
+          treatment_foreign={treatment_foreign}
+        />
+      )}
+      <br />
       <select onChange={e => onChange(e)} style={useStyles.countrySelect}>
         {hospitals.map(hospital => (
           <SelectOption
@@ -86,6 +114,8 @@ const LocalCase = ({
           />
         ))}
       </select>
+      <br />
+      <br />
     </div>
   );
 };
