@@ -8,6 +8,7 @@ import { getSumOfStats, getAllStatsWithCountry } from '../actions/globalStat';
 import TopStat from '../components/TopStat';
 import BottomStat from '../components/BottomStat';
 import DashboardAction from '../components/DashboardAction';
+import Alert from '../layouts/Alert';
 import Spinner from '../layouts/Spinner';
 
 const Dashboard = ({
@@ -19,27 +20,6 @@ const Dashboard = ({
   getSumOfStats,
   getAllStatsWithCountry
 }) => {
-  const useStyles = {
-    confirmedAlert: {
-      position: 'absolute',
-      top: '2rem',
-      right: '2rem',
-      background: '#22A7F0',
-      color: '#fff',
-      padding: '.7rem 1.2rem',
-      boxShadow: '1px 1px 1px 1px #111'
-    },
-    deathAlert: {
-      position: 'absolute',
-      top: '6rem',
-      right: '2rem',
-      background: '#C3272B',
-      color: '#fff',
-      padding: '.7rem 1.2rem',
-      boxShadow: '1px 1px 1px 1px #111'
-    }
-  };
-
   const [activeStats, setActiveStats] = useState(null);
   const [newConfirmedStats, setNewConfirmedStats] = useState(null);
   const [newDeathStats, setNewDeathStats] = useState(null);
@@ -71,24 +51,12 @@ const Dashboard = ({
     setNewDeathStats(loading ? null : totalTodayDeathStats);
   }, [getSumOfStats, getAllStatsWithCountry, loading, stats]);
 
-  const appendNewConfirmedStats = newConfirmedStats !== null && !loading && (
-    <div style={useStyles.confirmedAlert}>
-      <span>New Confirmed Stats: +{newConfirmedStats}</span>
-    </div>
-  );
-
-  const appendNewDeathStats = newDeathStats !== null && !loading && (
-    <div style={useStyles.deathAlert}>
-      <span>New Death Stats: +{newDeathStats}</span>
-    </div>
-  );
-
   return loading ? (
     <Spinner />
   ) : (
     <div className='Dashboard'>
-      {appendNewConfirmedStats}
-      {appendNewDeathStats}
+      <Alert type='confirmed' cases={newConfirmedStats} />
+      <Alert cases={newDeathStats} />
       <TopStat cases={cases} active={activeStats} />
       <br />
       <br />

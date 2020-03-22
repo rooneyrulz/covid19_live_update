@@ -16,24 +16,6 @@ const BottomStat = ({ deaths, recovered, local = false }) => {
     },
     deathHeading: {
       color: '#C3272B'
-    },
-    confirmedAlert: {
-      position: 'absolute',
-      top: '2rem',
-      right: '2rem',
-      background: '#22A7F0',
-      color: '#fff',
-      padding: '.7rem 1.2rem',
-      boxShadow: '1px 1px 1px 1px #111'
-    },
-    deathAlert: {
-      position: 'absolute',
-      top: '6rem',
-      right: '2rem',
-      background: '#C3272B',
-      color: '#fff',
-      padding: '.7rem 1.2rem',
-      boxShadow: '1px 1px 1px 1px #111'
     }
   };
   return (
