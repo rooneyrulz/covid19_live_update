@@ -61,9 +61,7 @@ const Dashboard = ({
       <br />
       <TopStat cases={cases} active={activeStats} />
       <br />
-      <br />
       <DashboardAction />
-      <br />
       <br />
       <BottomStat deaths={deaths} recovered={recovered} />
     </div>

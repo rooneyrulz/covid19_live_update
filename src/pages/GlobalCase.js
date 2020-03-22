@@ -21,8 +21,8 @@ const GlobalCase = ({
 }) => {
   const useStyles = {
     countrySelect: {
-      width: '400px',
-      height: '50px',
+      width: '300px',
+      height: '45px',
       fontSize: '1.4rem',
       border: 'none',
       outline: 'none',
@@ -65,7 +65,6 @@ const GlobalCase = ({
       <hr />
       <br />
       <TopStat cases={cases} active={active} />
-      <br />
       <select
         id='select-country'
         onChange={e => onChange(e)}
@@ -75,8 +74,6 @@ const GlobalCase = ({
           <SelectOption key={country} value={country} text={country} />
         ))}
       </select>
-      <br />
-      <br />
       <BottomStat deaths={deaths} recovered={recovered} />
     </div>
   );

@@ -18,8 +18,8 @@ const LocalCase = ({
 }) => {
   const useStyles = {
     countrySelect: {
-      width: '400px',
-      height: '50px',
+      width: '300px',
+      height: '45px',
       fontSize: '1.4rem',
       border: 'none',
       outline: 'none',
@@ -90,7 +90,6 @@ const LocalCase = ({
         recovered={local_recovered}
       />
       <hr />
-      <br />
       <h3>Hospital Stats</h3>
       {hospital && (
         <HospitalStat
