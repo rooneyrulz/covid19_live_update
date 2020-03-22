@@ -36,7 +36,7 @@ body {
   text-align: center !important;
 
   width: 100% !important;
-  height: 70vh !important;
+  height: 65vh !important;
   z-index: 100 !important;
   color: #fff !important;
   overflow-y: auto !important;
@@ -51,7 +51,7 @@ body {
   text-align: center !important;
 
   width: 100% !important;
-  height: 20vh !important;
+  height: 25vh !important;
   z-index: 100 !important;
   color: #fff !important;
   /* background: #3232; */

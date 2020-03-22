@@ -60,6 +60,8 @@ const LocalCase = ({
         type='suspected'
         suspectedCases={local_total_number_of_individuals_in_hospitals}
       />
+      <h3>Local Stats</h3>
+      <br />
       <TopStat
         cases={local_total_cases}
         active={local_total_cases - local_recovered}

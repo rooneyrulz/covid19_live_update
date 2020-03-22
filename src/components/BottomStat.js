@@ -20,18 +20,18 @@ const BottomStat = ({ deaths, recovered, updated, local = false }) => {
   };
   return (
     <div className='bottom'>
-      <h1
+      <h2
         style={(useStyles.caseHeading, useStyles.recoveredHeading)}
         className='case-heading recovered-heading'
       >
         Recovered {local && '& Discharged'}: {recovered}
-      </h1>
-      <h1
+      </h2>
+      <h2
         style={(useStyles.caseHeading, useStyles.deathHeading)}
         className='case-heading death-heading'
       >
         Death: {deaths}
-      </h1>
+      </h2>
       <br />
       {local && <h3>Last Updates: {updated}</h3>}
     </div>

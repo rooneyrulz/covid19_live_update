@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 const Alert = ({
   type = null,
@@ -39,7 +39,7 @@ const Alert = ({
     }
   };
   return (
-    <div className='alert'>
+    <Fragment>
       {type === 'confirmed' && (
         <div className='alert' style={useStyles.confirmedAlert}>
           <span>New Confirmed Stats: +{cases}</span>
@@ -55,7 +55,7 @@ const Alert = ({
           <span>Total Suspected Cases: +{suspectedCases}</span>
         </div>
       )}
-    </div>
+    </Fragment>
   );
 };
 

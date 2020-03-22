@@ -66,7 +66,6 @@ const GlobalCase = ({
       <br />
       <TopStat cases={cases} active={active} />
       <br />
-      <br />
       <select onChange={e => onChange(e)} style={useStyles.countrySelect}>
         {countries.map(country => (
           <SelectOption key={country} value={country} text={country} />

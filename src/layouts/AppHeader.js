@@ -9,20 +9,21 @@ const AppHeader = () => {
     navLink: {
       textDecoration: 'none',
       color: '#fff',
-      fontSize: '1.5rem',
-      fontWeight: 'bold'
+      fontSize: '1.2rem'
     }
   };
 
   return (
-    <div style={{ padding: '.5em' }}>
+    <div>
+      <h2>COVID-19 LIVE</h2>
       <NavLink style={styles.navLink} exact to='/'>
         {' '}
-        COVID-19 TRACKER{' '}
+        Dashboard
       </NavLink>
       <br />
+      <hr />
       <br />
-      <Earth path={path} width={'20px'} />
+      <Earth path={path} width='10px' />
     </div>
   );
 };

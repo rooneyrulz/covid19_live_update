@@ -20,18 +20,18 @@ const TopStat = ({ cases, active }) => {
   };
   return (
     <div className='top'>
-      <h1
+      <h2
         style={(useStyles.caseHeading, useStyles.confirmedHeading)}
         className='case-heading confirmed-heading'
       >
         Confirmed: {cases}
-      </h1>
-      <h1
+      </h2>
+      <h2
         style={(useStyles.caseHeading, useStyles.activeHeading)}
         className='case-heading active-heading'
       >
         Active: {active}
-      </h1>
+      </h2>
     </div>
   );
 };

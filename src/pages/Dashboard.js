@@ -57,6 +57,8 @@ const Dashboard = ({
     <div className='Dashboard'>
       <Alert type='confirmed' cases={newConfirmedStats} />
       <Alert type='death' cases={newDeathStats} />
+      <h3>Global Stats</h3>
+      <br />
       <TopStat cases={cases} active={activeStats} />
       <br />
       <br />
