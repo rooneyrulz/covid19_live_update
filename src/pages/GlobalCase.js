@@ -11,6 +11,7 @@ import {
 import TopStat from '../components/TopStat';
 import BottomStat from '../components/BottomStat';
 import SelectOption from '../components/SelectOption';
+import Alert from '../layouts/Alert';
 import Spinner from '../layouts/Spinner';
 
 const GlobalCase = ({
@@ -44,12 +45,22 @@ const GlobalCase = ({
     getStatByCountry(e.target.value);
   };
 
-  const { country, cases, deaths, recovered, active } = stat;
+  const {
+    country,
+    cases,
+    deaths,
+    recovered,
+    active,
+    todayCases,
+    todayDeaths
+  } = stat;
 
   return loading ? (
     <Spinner />
   ) : (
     <div className='GlobalCases'>
+      <Alert type='confirmed' cases={todayCases} />
+      <Alert cases={todayDeaths} />
       <h2>{country}</h2>
       <hr />
       <br />

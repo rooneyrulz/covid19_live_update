@@ -8,6 +8,7 @@ import { getLocalStats, getLocalHospitalData } from '../actions/localStat';
 import TopStat from '../components/TopStat';
 import BottomStat from '../components/BottomStat';
 import SelectOption from '../components/SelectOption';
+import Alert from '../layouts/Alert';
 import Spinner from '../layouts/Spinner';
 
 const LocalCase = ({
@@ -44,6 +45,7 @@ const LocalCase = ({
     update_date_time,
     local_total_cases,
     local_new_cases,
+    local_new_deaths,
     local_total_number_of_individuals_in_hospitals,
     local_deaths,
     local_recovered
@@ -53,6 +55,12 @@ const LocalCase = ({
     <Spinner />
   ) : (
     <div className='LocalCases'>
+      <Alert type='confirmed' cases={local_new_cases} />
+      <Alert cases={local_new_deaths} />
+      <Alert
+        local={true}
+        cases={local_total_number_of_individuals_in_hospitals}
+      />
       <TopStat
         cases={local_total_cases}
         active={local_total_cases - local_recovered}
