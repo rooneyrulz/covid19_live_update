@@ -41,7 +41,7 @@ const LocalCase = ({
       !loading &&
       hospitalStats.find(hospital => hospital.hospital_id.toString() === '1');
     setHospitalData(() => (loading ? {} : filterHospital));
-  }, [getLocalStats, hospitalStats, loading]);
+  }, [getLocalStats, loading]);
 
   const onChange = e => {
     const filterHospital = hospitalStats.find(
