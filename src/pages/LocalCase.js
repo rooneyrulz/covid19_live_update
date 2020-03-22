@@ -31,8 +31,7 @@ const LocalCase = ({
   const [hospitaldata, setHospitalData] = useState({});
 
   useEffect(() => {
-    setInterval(() => getLocalStats(), 1000);
-
+    getLocalStats();
     const hospitalList = hospitalStats.map(hospital => {
       return { id: hospital.hospital.id, name: hospital.hospital.name };
     });
