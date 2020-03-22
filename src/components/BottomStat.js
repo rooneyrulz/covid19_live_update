@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BottomStat = ({ deaths, recovered, updated, local = false }) => {
+const BottomStat = ({ deaths, recovered, local = false }) => {
   const useStyles = {
     caseHeading: {
       fontWeight: '100'
@@ -32,8 +32,6 @@ const BottomStat = ({ deaths, recovered, updated, local = false }) => {
       >
         Death: {deaths}
       </h2>
-      <br />
-      {local && <h3>Last Updates: {updated}</h3>}
     </div>
   );
 };

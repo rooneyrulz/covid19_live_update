@@ -88,11 +88,10 @@ const LocalCase = ({
         local={true}
         deaths={local_deaths}
         recovered={local_recovered}
-        updated={update_date_time}
       />
       <hr />
-      <h3>Hospital Stats</h3>
       <br />
+      <h3>Hospital Stats</h3>
       {hospital && (
         <HospitalStat
           name={hospital.name}
@@ -101,7 +100,6 @@ const LocalCase = ({
           treatment_foreign={treatment_foreign}
         />
       )}
-      <br />
       <select
         className='select'
         onChange={e => onChange(e)}
@@ -117,6 +115,7 @@ const LocalCase = ({
       </select>
       <br />
       <br />
+      <h4>Last Updates: {update_date_time}</h4>
     </div>
   );
 };

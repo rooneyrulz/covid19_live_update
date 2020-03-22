@@ -23,7 +23,7 @@ const AppHeader = () => {
       <br />
       <hr />
       <br />
-      <Earth path={path} width='10px' />
+      <Earth path={path} />
     </div>
   );
 };
