@@ -31,7 +31,7 @@ const LocalCase = ({
   const [hospitaldata, setHospitalData] = useState({});
 
   useEffect(() => {
-    getLocalStats();
+    setInterval(() => getLocalStats(), 1000);
 
     const hospitalList = hospitalStats.map(hospital => {
       return { id: hospital.hospital.id, name: hospital.hospital.name };
@@ -91,9 +91,7 @@ const LocalCase = ({
         recovered={local_recovered}
         updated={update_date_time}
       />
-      <br />
       <hr />
-      <br />
       <h3>Hospital Stats</h3>
       <br />
       {hospital && (
@@ -105,7 +103,11 @@ const LocalCase = ({
         />
       )}
       <br />
-      <select onChange={e => onChange(e)} style={useStyles.countrySelect}>
+      <select
+        className='select'
+        onChange={e => onChange(e)}
+        style={useStyles.countrySelect}
+      >
         {hospitals.map(hospital => (
           <SelectOption
             key={hospital.id}

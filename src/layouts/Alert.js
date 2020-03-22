@@ -42,7 +42,7 @@ const Alert = ({
     <Fragment>
       {type === 'confirmed' && (
         <div className='alert' style={useStyles.confirmedAlert}>
-          <span>New Confirmed Stats: +{cases}</span>
+          <span>New Stats: +{cases}</span>
         </div>
       )}
       {type === 'death' && (
@@ -52,7 +52,7 @@ const Alert = ({
       )}
       {local && type === 'suspected' && (
         <div className='alert' style={useStyles.suspectedAlert}>
-          <span>Total Suspected Cases: +{suspectedCases}</span>
+          <span>Suspected Cases: +{suspectedCases}</span>
         </div>
       )}
     </Fragment>

@@ -15,7 +15,6 @@ const HospitalStat = ({
   return (
     <div>
       <h2>{name}</h2>
-      <br />
       <h3
         style={useStyles.caseHeading}
         className='case-heading recovered-heading'

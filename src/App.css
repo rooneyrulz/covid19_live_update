@@ -36,10 +36,11 @@ body {
   text-align: center !important;
 
   width: 100% !important;
-  height: 65vh !important;
+  height: 67vh !important;
   z-index: 100 !important;
   color: #fff !important;
   overflow-y: auto !important;
+  overflow-x: hidden !important;
   /* background: #ccc; */
 }
 
@@ -51,7 +52,7 @@ body {
   text-align: center !important;
 
   width: 100% !important;
-  height: 25vh !important;
+  height: 23vh !important;
   z-index: 100 !important;
   color: #fff !important;
   /* background: #3232; */
@@ -107,5 +108,15 @@ body {
   .btn-dashboard {
     display: block;
     padding: 0.6rem 1.8rem;
+  }
+  #select-country {
+    width: '300px' !important;
+    height: '45px' !important;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .alert {
+    display: none;
   }
 }
