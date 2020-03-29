@@ -38,7 +38,7 @@ const GlobalCase = ({
   }, [getAllStatsWithCountry, loading, stats]);
 
   useEffect(() => {
-    getStatByCountry('China');
+    getStatByCountry('USA');
   }, [getStatByCountry]);
 
   const onChange = e => {
