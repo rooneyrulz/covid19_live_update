@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 // REDUX
 import { connect } from 'react-redux';
 import {
   getAllStatsWithCountry,
-  getStatByCountry
+  getStatByCountry,
 } from '../actions/globalStat';
 
 import TopStat from '../components/TopStat';
@@ -17,7 +17,7 @@ import Spinner from '../layouts/Spinner';
 const GlobalCase = ({
   stats: { stats, stat, loading },
   getAllStatsWithCountry,
-  getStatByCountry
+  getStatByCountry,
 }) => {
   const useStyles = {
     countrySelect: {
@@ -26,22 +26,22 @@ const GlobalCase = ({
       fontSize: '1.4rem',
       border: 'none',
       outline: 'none',
-      boxShadow: '1px 1px 1px 1px #111'
-    }
+      boxShadow: '1px 1px 1px 1px #111',
+    },
   };
 
   const [countries, setCountries] = useState([]);
 
   useEffect(() => {
     getAllStatsWithCountry();
-    setCountries(() => (loading ? [] : stats.map(stat => stat.country)));
+    setCountries(() => (loading ? [] : stats.map((stat) => stat.country)));
   }, [getAllStatsWithCountry, loading, stats]);
 
   useEffect(() => {
     getStatByCountry('USA');
   }, [getStatByCountry]);
 
-  const onChange = e => {
+  const onChange = (e) => {
     getStatByCountry(e.target.value);
   };
 
@@ -52,7 +52,7 @@ const GlobalCase = ({
     recovered,
     active,
     todayCases,
-    todayDeaths
+    todayDeaths,
   } = stat;
 
   return loading ? (
@@ -67,12 +67,17 @@ const GlobalCase = ({
       <TopStat cases={cases} active={active} />
       <select
         id='select-country'
-        onChange={e => onChange(e)}
+        onChange={(e) => onChange(e)}
         style={useStyles.countrySelect}
       >
-        {countries.map(country => (
-          <SelectOption key={country} value={country} text={country} />
-        ))}
+        <Fragment>
+          <option default={true} value='USA'>
+            USA
+          </option>
+          {countries.map((country) => (
+            <SelectOption key={country} value={country} text={country} />
+          ))}
+        </Fragment>
       </select>
       <BottomStat deaths={deaths} recovered={recovered} />
     </div>
@@ -82,14 +87,14 @@ const GlobalCase = ({
 GlobalCase.propTypes = {
   stats: PropTypes.object.isRequired,
   getAllStatsWithCountry: PropTypes.func.isRequired,
-  getStatByCountry: PropTypes.func.isRequired
+  getStatByCountry: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
-  stats: state.globalStat
+const mapStateToProps = (state) => ({
+  stats: state.globalStat,
 });
 
 export default connect(mapStateToProps, {
   getAllStatsWithCountry,
-  getStatByCountry
+  getStatByCountry,
 })(GlobalCase);

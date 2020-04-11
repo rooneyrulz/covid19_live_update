@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 
 // REDUX
@@ -21,9 +21,7 @@ const App = () => {
               <AppHeader />
             </header>
             <main className='App-main'>
-              <Switch>
-                <Route component={Routes} />
-              </Switch>
+              <Route component={Routes} />
             </main>
             <footer className='App-footer'>
               <AppFooter />

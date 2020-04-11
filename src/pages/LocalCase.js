@@ -14,7 +14,7 @@ import Spinner from '../layouts/Spinner';
 
 const LocalCase = ({
   stat: { loading, allStats, hospitalStats },
-  getLocalStats
+  getLocalStats,
 }) => {
   const useStyles = {
     countrySelect: {
@@ -23,8 +23,8 @@ const LocalCase = ({
       fontSize: '1.4rem',
       border: 'none',
       outline: 'none',
-      boxShadow: '1px 1px 1px 1px #111'
-    }
+      boxShadow: '1px 1px 1px 1px #111',
+    },
   };
 
   const [hospitals, setHospitals] = useState([]);
@@ -32,20 +32,20 @@ const LocalCase = ({
 
   useEffect(() => {
     getLocalStats();
-    const hospitalList = hospitalStats.map(hospital => {
+    const hospitalList = hospitalStats.map((hospital) => {
       return { id: hospital.hospital.id, name: hospital.hospital.name };
     });
     setHospitals(() => (loading ? [] : hospitalList));
 
     const filterHospital =
       !loading &&
-      hospitalStats.find(hospital => hospital.hospital_id.toString() === '1');
+      hospitalStats.find((hospital) => hospital.hospital_id.toString() === '1');
     setHospitalData(() => (loading ? {} : filterHospital));
   }, [getLocalStats, loading]);
 
-  const onChange = e => {
+  const onChange = (e) => {
     const filterHospital = hospitalStats.find(
-      hospital => hospital.hospital_id.toString() === e.target.value
+      (hospital) => hospital.hospital_id.toString() === e.target.value
     );
     setHospitalData(() => (loading ? {} : filterHospital));
   };
@@ -57,14 +57,14 @@ const LocalCase = ({
     local_new_deaths,
     local_total_number_of_individuals_in_hospitals,
     local_deaths,
-    local_recovered
+    local_recovered,
   } = allStats;
 
   const {
     treatment_total,
     treatment_local,
     treatment_foreign,
-    hospital
+    hospital,
   } = hospitaldata;
 
   return loading ? (
@@ -101,10 +101,10 @@ const LocalCase = ({
       )}
       <select
         className='select'
-        onChange={e => onChange(e)}
+        onChange={(e) => onChange(e)}
         style={useStyles.countrySelect}
       >
-        {hospitals.map(hospital => (
+        {hospitals.map((hospital) => (
           <SelectOption
             key={hospital.id}
             value={hospital.id}
@@ -121,13 +121,13 @@ const LocalCase = ({
 
 LocalCase.propTypes = {
   stat: PropTypes.object.isRequired,
-  getLocalStats: PropTypes.func.isRequired
+  getLocalStats: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
-  stat: state.localStat
+const mapStateToProps = (state) => ({
+  stat: state.localStat,
 });
 
 export default connect(mapStateToProps, {
-  getLocalStats
+  getLocalStats,
 })(LocalCase);
