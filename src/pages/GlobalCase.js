@@ -21,8 +21,8 @@ const GlobalCase = ({
 }) => {
   const useStyles = {
     countrySelect: {
-      width: '100%',
-      height: '45px',
+      width: '60%',
+      height: '50px',
       fontSize: '1.4rem',
       border: 'none',
       outline: 'none',
@@ -63,29 +63,29 @@ const GlobalCase = ({
         <Alert type='death' cases={todayDeaths} />
       </div>
       <br />
-      <h1>{country}</h1>
-      <hr />
-      <br />
-      <br />
-      <TopStat cases={cases} active={active} />
-      <br />
-      <select
-        id='select-country'
-        onChange={(e) => onChange(e)}
-        style={useStyles.countrySelect}
-      >
-        <Fragment>
-          <option default={true} value='USA'>
-            USA
-          </option>
-          {countries.map((country) => (
-            <SelectOption key={country} value={country} text={country} />
-          ))}
-        </Fragment>
-      </select>
-      <br />
-      <br />
-      <BottomStat deaths={deaths} recovered={recovered} />
+      <div className='global-main'>
+        <h1>{country}</h1>
+        <br />
+        <TopStat cases={cases} active={active} />
+        <br />
+        <select
+          id='select-country'
+          onChange={(e) => onChange(e)}
+          style={useStyles.countrySelect}
+        >
+          <Fragment>
+            <option default={true} value='USA'>
+              USA
+            </option>
+            {countries.map((country) => (
+              <SelectOption key={country} value={country} text={country} />
+            ))}
+          </Fragment>
+        </select>
+        <br />
+        <br />
+        <BottomStat deaths={deaths} recovered={recovered} />
+      </div>
     </div>
   );
 };

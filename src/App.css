@@ -10,11 +10,8 @@ body {
     font-weight: 400;
     font-family: 'Nunito', sans-serif;
     overflow-x: hidden;
+    background: #333;
     color: #fff;
-    background-image: url('./assets/background.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
 .App {
@@ -24,54 +21,84 @@ body {
     min-height: 100vh;
     align-items: center;
     text-align: center;
-    padding: 1rem;
-    /* background-image: url('./assets/background.jpg');
-    background-size: cover; */
-    background: #264348;
-    opacity: 0.9;
+    padding: 2rem;
+}
+
+.App-header-wrapper {
+    width: 100%;
 }
 
 .App-header {
-    position: relative;
-    top: 0;
-    left: 0;
+    z-index: 100;
     width: 100%;
-    margin-bottom: 1rem;
+    background: #555;
+    box-shadow: 1px 1px 1px 1px #222;
 }
 
 .header-wrapper {
-    padding: 0.5rem;
+    padding: 1rem;
 }
 
 .header-wrapper h1 {
     font-size: 2.3rem;
-    margin-bottom: 0.3rem;
+    margin: 0;
 }
 
-.header-wrapper h3 {
-    margin-bottom: 1rem;
+.App-main {
+    width: 100%;
+    z-index: 100;
+}
+
+.dashboard-main {
+    padding: 1rem;
+    width: 100%;
+    background: #555;
+    box-shadow: 1px 1px 1px 1px #222;
+}
+
+.global-main {
+    padding: 1rem;
+    width: 100%;
+    background: #555;
+    box-shadow: 1px 1px 1px 1px #222;
+}
+
+.local-stats {
+    padding: 1rem;
+    width: 100%;
+    background: #555;
+    box-shadow: 1px 1px 1px 1px #222;
+}
+
+.local-hospital-stats {
+    padding: 1rem;
+    width: 100%;
+    background: #555;
+    box-shadow: 1px 1px 1px 1px #222;
 }
 
 .App-footer {
-    margin-top: 2rem;
+    padding: 1rem;
+    z-index: 100;
+    width: 100%;
+    background: #555;
+    box-shadow: 1px 1px 1px 1px #222;
 }
 
-
-/* .App-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #444;
-} */
-
 .btn-dashboard:hover {
-    background: #222 !important;
     color: #fff !important;
     box-shadow: none !important;
 }
 
-@media only screen and (max-width: 450px) {
+.btn-local:hover {
+    background: #368a33 !important;
+}
+
+.btn-global:hover {
+    background: #114680 !important;
+}
+
+@media only screen and (max-width: 550px) {
     .btn-dashboard {
         display: block;
     }

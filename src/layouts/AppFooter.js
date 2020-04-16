@@ -3,10 +3,9 @@ import React from 'react';
 const AppFooter = () => {
   return (
     <div>
-      <hr style={{ color: '#fff' }} />
-      <p style={{ padding: '.5em' }}>
+      <p>
         <strong>COVID-19 Live Tracker</strong> All Rights Reserved To{' '}
-        <strong>Ruzny</strong>
+        <strong>DevRulz@Programmer.rulz</strong>
       </p>
     </div>
   );

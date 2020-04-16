@@ -18,7 +18,7 @@ const LocalCase = ({
 }) => {
   const useStyles = {
     countrySelect: {
-      width: '100%',
+      width: '60%',
       height: '50px',
       fontSize: '1.4rem',
       border: 'none',
@@ -80,7 +80,7 @@ const LocalCase = ({
         />
       </div>
       <br />
-      <div className='local-main'>
+      <div className='local-stats'>
         <h1>Local Stats</h1>
         <br />
         <TopStat
@@ -93,8 +93,9 @@ const LocalCase = ({
           recovered={local_recovered}
         />
         <br />
-        <hr />
-        <br />
+      </div>
+      <br />
+      <div className='local-hospital-stats'>
         <h1>Hospital Stats</h1>
         <br />
         {hospital && (
@@ -118,10 +119,9 @@ const LocalCase = ({
             />
           ))}
         </select>
-        <br />
-        <br />
-        <h4>Last Updates: {update_date_time}</h4>
       </div>
+      <br />
+      <h3>Last Updates: {update_date_time}</h3>
     </div>
   );
 };

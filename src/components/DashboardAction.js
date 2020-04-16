@@ -29,14 +29,14 @@ const DashboardAction = () => {
     <div className='btn-group'>
       <Link
         style={useStyles.btnLocal}
-        className='btn-dashboard'
+        className='btn-dashboard btn-local'
         to='/local-cases'
       >
         Local Cases
       </Link>
       <Link
         style={useStyles.btnGlobal}
-        className='btn-dashboard'
+        className='btn-dashboard btn-global'
         to='/global-cases'
       >
         Global Cases

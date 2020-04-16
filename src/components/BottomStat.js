@@ -15,7 +15,7 @@ const BottomStat = ({ deaths, recovered, local = false }) => {
       color: '#111',
     },
     deathHeading: {
-      color: '#C3272B',
+      color: '#e61e2e',
     },
   };
   return (

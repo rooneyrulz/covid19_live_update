@@ -1,13 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
-
-import path from '../assets/earth.gif';
-import Earth from './Spinner';
 
 const AppHeader = () => {
   const styles = {
     navLink: {
       fontSize: '1.5rem',
+      fontWeight: 'bold',
       textDecoration: 'none',
       color: '#fff',
     },
@@ -16,15 +14,10 @@ const AppHeader = () => {
   return (
     <div className='header-wrapper'>
       <h1>COVID-19 LIVE</h1>
-      <h3>
-        <NavLink style={styles.navLink} exact to='/'>
-          {' '}
-          Dashboard
-        </NavLink>
-      </h3>
-      <br />
-      <Earth path={path} />
-      <br />
+      <NavLink style={styles.navLink} exact to='/'>
+        {' '}
+        Home
+      </NavLink>
     </div>
   );
 };

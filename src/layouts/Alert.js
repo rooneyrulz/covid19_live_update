@@ -8,28 +8,31 @@ const Alert = ({
 }) => {
   const useStyles = {
     confirmedAlert: {
-      background: '#22A7F0',
+      width: '300px',
+      background: '#114680',
       color: '#fff',
       padding: '.5rem 1.2rem',
       borderRadius: '2.5em',
       boxShadow: '1px 1px 1px 1px #111',
-      marginBottom: '.4rem',
+      margin: '.4rem auto',
     },
     deathAlert: {
+      width: '300px',
       background: '#C3272B',
       color: '#fff',
       padding: '.5rem 1.2rem',
       borderRadius: '2.5em',
       boxShadow: '1px 1px 1px 1px #111',
-      marginBottom: '.4rem',
+      margin: '.4rem auto',
     },
     suspectedAlert: {
-      background: '#26C281',
+      width: '300px',
+      background: '#368a33',
       color: '#fff',
       padding: '.5rem 1.2rem',
       borderRadius: '2.5em',
       boxShadow: '1px 1px 1px 1px #111',
-      marginBottom: '.4rem',
+      margin: '.4rem auto',
     },
   };
   return (

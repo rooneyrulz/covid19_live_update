@@ -62,7 +62,6 @@ const Dashboard = ({
       <br />
       <div className='dashboard-main'>
         <h1>Global Stats</h1>
-        <hr />
         <br />
         <TopStat cases={cases} active={activeStats} />
         <br />
