@@ -15,10 +15,10 @@ const Dashboard = ({
   stats: {
     allStats: { cases, deaths, recovered },
     stats,
-    loading
+    loading,
   },
   getSumOfStats,
-  getAllStatsWithCountry
+  getAllStatsWithCountry,
 }) => {
   const [activeStats, setActiveStats] = useState(null);
   const [newConfirmedStats, setNewConfirmedStats] = useState(null);
@@ -28,19 +28,19 @@ const Dashboard = ({
     getSumOfStats();
     getAllStatsWithCountry();
 
-    const activeCases = stats.map(stat => stat.active);
+    const activeCases = stats.map((stat) => stat.active);
     const totalActiveCases = activeCases.reduce(
       (sum, num) => (sum += num),
       activeCases[0]
     );
 
-    const newConfirmedStats = stats.map(stat => stat.todayCases);
+    const newConfirmedStats = stats.map((stat) => stat.todayCases);
     const totalTodayConfirmedStats = newConfirmedStats.reduce(
       (sum, num) => (sum += num),
       newConfirmedStats[0]
     );
 
-    const newDeathStats = stats.map(stat => stat.todayDeaths);
+    const newDeathStats = stats.map((stat) => stat.todayDeaths);
     const totalTodayDeathStats = newDeathStats.reduce(
       (sum, num) => (sum += num),
       newDeathStats[0]
@@ -55,15 +55,23 @@ const Dashboard = ({
     <Spinner />
   ) : (
     <div className='Dashboard'>
-      <Alert type='confirmed' cases={newConfirmedStats} />
-      <Alert type='death' cases={newDeathStats} />
-      <h3>Global Stats</h3>
+      <div className='alert-wrapper'>
+        <Alert type='confirmed' cases={newConfirmedStats} />
+        <Alert type='death' cases={newDeathStats} />
+      </div>
       <br />
-      <TopStat cases={cases} active={activeStats} />
-      <br />
-      <DashboardAction />
-      <br />
-      <BottomStat deaths={deaths} recovered={recovered} />
+      <div className='dashboard-main'>
+        <h1>Global Stats</h1>
+        <hr />
+        <br />
+        <TopStat cases={cases} active={activeStats} />
+        <br />
+        <br />
+        <DashboardAction />
+        <br />
+        <br />
+        <BottomStat deaths={deaths} recovered={recovered} />
+      </div>
     </div>
   );
 };
@@ -71,14 +79,14 @@ const Dashboard = ({
 Dashboard.propTypes = {
   stats: PropTypes.object.isRequired,
   getSumOfStats: PropTypes.func.isRequired,
-  getAllStatsWithCountry: PropTypes.func.isRequired
+  getAllStatsWithCountry: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
-  stats: state.globalStat
+const mapStateToProps = (state) => ({
+  stats: state.globalStat,
 });
 
 export default connect(mapStateToProps, {
   getSumOfStats,
-  getAllStatsWithCountry
+  getAllStatsWithCountry,
 })(Dashboard);

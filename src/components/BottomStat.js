@@ -3,20 +3,20 @@ import React from 'react';
 const BottomStat = ({ deaths, recovered, local = false }) => {
   const useStyles = {
     caseHeading: {
-      fontWeight: '100'
+      fontWeight: '100',
     },
     confirmedHeading: {
-      color: '#22A7F0'
+      color: '#22A7F0',
     },
     activeHeading: {
-      color: '#26C281'
+      color: '#26C281',
     },
     recoveredHeading: {
-      color: '#222'
+      color: '#111',
     },
     deathHeading: {
-      color: '#C3272B'
-    }
+      color: '#C3272B',
+    },
   };
   return (
     <div className='bottom'>

@@ -4,39 +4,33 @@ const Alert = ({
   type = null,
   cases = null,
   suspectedCases = null,
-  local = false
+  local = false,
 }) => {
   const useStyles = {
     confirmedAlert: {
-      position: 'absolute',
-      top: '2rem',
-      right: '2rem',
       background: '#22A7F0',
       color: '#fff',
       padding: '.5rem 1.2rem',
       borderRadius: '2.5em',
-      boxShadow: '1px 1px 1px 1px #111'
+      boxShadow: '1px 1px 1px 1px #111',
+      marginBottom: '.4rem',
     },
     deathAlert: {
-      position: 'absolute',
-      top: '5rem',
-      right: '2rem',
       background: '#C3272B',
       color: '#fff',
       padding: '.5rem 1.2rem',
       borderRadius: '2.5em',
-      boxShadow: '1px 1px 1px 1px #111'
+      boxShadow: '1px 1px 1px 1px #111',
+      marginBottom: '.4rem',
     },
     suspectedAlert: {
-      position: 'absolute',
-      top: '8rem',
-      right: '2rem',
       background: '#26C281',
       color: '#fff',
       padding: '.5rem 1.2rem',
       borderRadius: '2.5em',
-      boxShadow: '1px 1px 1px 1px #111'
-    }
+      boxShadow: '1px 1px 1px 1px #111',
+      marginBottom: '.4rem',
+    },
   };
   return (
     <Fragment>

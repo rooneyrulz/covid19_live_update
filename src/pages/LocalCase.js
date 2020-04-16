@@ -18,12 +18,11 @@ const LocalCase = ({
 }) => {
   const useStyles = {
     countrySelect: {
-      width: '300px',
-      height: '45px',
+      width: '100%',
+      height: '50px',
       fontSize: '1.4rem',
       border: 'none',
       outline: 'none',
-      boxShadow: '1px 1px 1px 1px #111',
     },
   };
 
@@ -71,50 +70,58 @@ const LocalCase = ({
     <Spinner />
   ) : (
     <div className='LocalCases'>
-      <Alert type='confirmed' cases={local_new_cases} />
-      <Alert type='death' cases={local_new_deaths} />
-      <Alert
-        local={true}
-        type='suspected'
-        suspectedCases={local_total_number_of_individuals_in_hospitals}
-      />
-      <h3>Local Stats</h3>
-      <br />
-      <TopStat
-        cases={local_total_cases}
-        active={local_total_cases - local_recovered}
-      />
-      <BottomStat
-        local={true}
-        deaths={local_deaths}
-        recovered={local_recovered}
-      />
-      <hr />
-      <h3>Hospital Stats</h3>
-      {hospital && (
-        <HospitalStat
-          name={hospital.name}
-          treatment_total={treatment_total}
-          treatment_local={treatment_local}
-          treatment_foreign={treatment_foreign}
+      <div className='alert-wrapper'>
+        <Alert type='confirmed' cases={local_new_cases} />
+        <Alert type='death' cases={local_new_deaths} />
+        <Alert
+          local={true}
+          type='suspected'
+          suspectedCases={local_total_number_of_individuals_in_hospitals}
         />
-      )}
-      <select
-        className='select'
-        onChange={(e) => onChange(e)}
-        style={useStyles.countrySelect}
-      >
-        {hospitals.map((hospital) => (
-          <SelectOption
-            key={hospital.id}
-            value={hospital.id}
-            text={hospital.name}
+      </div>
+      <br />
+      <div className='local-main'>
+        <h1>Local Stats</h1>
+        <br />
+        <TopStat
+          cases={local_total_cases}
+          active={local_total_cases - local_recovered}
+        />
+        <BottomStat
+          local={true}
+          deaths={local_deaths}
+          recovered={local_recovered}
+        />
+        <br />
+        <hr />
+        <br />
+        <h1>Hospital Stats</h1>
+        <br />
+        {hospital && (
+          <HospitalStat
+            name={hospital.name}
+            treatment_total={treatment_total}
+            treatment_local={treatment_local}
+            treatment_foreign={treatment_foreign}
           />
-        ))}
-      </select>
-      <br />
-      <br />
-      <h4>Last Updates: {update_date_time}</h4>
+        )}
+        <select
+          className='select'
+          onChange={(e) => onChange(e)}
+          style={useStyles.countrySelect}
+        >
+          {hospitals.map((hospital) => (
+            <SelectOption
+              key={hospital.id}
+              value={hospital.id}
+              text={hospital.name}
+            />
+          ))}
+        </select>
+        <br />
+        <br />
+        <h4>Last Updates: {update_date_time}</h4>
+      </div>
     </div>
   );
 };

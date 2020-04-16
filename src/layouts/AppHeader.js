@@ -7,23 +7,24 @@ import Earth from './Spinner';
 const AppHeader = () => {
   const styles = {
     navLink: {
+      fontSize: '1.5rem',
       textDecoration: 'none',
       color: '#fff',
-      fontSize: '1.2rem'
-    }
+    },
   };
 
   return (
-    <div>
-      <h2>COVID-19 LIVE</h2>
-      <NavLink style={styles.navLink} exact to='/'>
-        {' '}
-        Dashboard
-      </NavLink>
-      <br />
-      <hr />
+    <div className='header-wrapper'>
+      <h1>COVID-19 LIVE</h1>
+      <h3>
+        <NavLink style={styles.navLink} exact to='/'>
+          {' '}
+          Dashboard
+        </NavLink>
+      </h3>
       <br />
       <Earth path={path} />
+      <br />
     </div>
   );
 };

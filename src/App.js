@@ -27,7 +27,6 @@ const App = () => {
               <AppFooter />
             </footer>
           </div>
-          <div className='App-overlay'></div>
         </Fragment>
       </Router>
     </Provider>

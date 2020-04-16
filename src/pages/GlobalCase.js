@@ -21,12 +21,11 @@ const GlobalCase = ({
 }) => {
   const useStyles = {
     countrySelect: {
-      width: '300px',
+      width: '100%',
       height: '45px',
       fontSize: '1.4rem',
       border: 'none',
       outline: 'none',
-      boxShadow: '1px 1px 1px 1px #111',
     },
   };
 
@@ -59,12 +58,17 @@ const GlobalCase = ({
     <Spinner />
   ) : (
     <div className='GlobalCases'>
-      <Alert type='confirmed' cases={todayCases} />
-      <Alert type='death' cases={todayDeaths} />
-      <h2>{country}</h2>
+      <div className='alert-wrapper'>
+        <Alert type='confirmed' cases={todayCases} />
+        <Alert type='death' cases={todayDeaths} />
+      </div>
+      <br />
+      <h1>{country}</h1>
       <hr />
       <br />
+      <br />
       <TopStat cases={cases} active={active} />
+      <br />
       <select
         id='select-country'
         onChange={(e) => onChange(e)}
@@ -79,6 +83,8 @@ const GlobalCase = ({
           ))}
         </Fragment>
       </select>
+      <br />
+      <br />
       <BottomStat deaths={deaths} recovered={recovered} />
     </div>
   );

@@ -1,118 +1,78 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  line-height: 1.5;
-  font-size: 1rem;
-  font-weight: 400;
-  font-family: 'Nunito', sans-serif;
-  overflow: hidden;
+    line-height: 1.5;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: 'Nunito', sans-serif;
+    overflow-x: hidden;
+    color: #fff;
+    background-image: url('./assets/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .App {
-  display: flex !important;
-  top: 0;
-  left: 0;
-  width: 100%;
-  flex-direction: column !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  text-align: center !important;
-
-  background-image: url('./assets/background.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.App-main {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-around !important;
-  align-items: center !important;
-  text-align: center !important;
-
-  width: 100% !important;
-  height: 76vh !important;
-  z-index: 100 !important;
-  color: #fff !important;
-  overflow-y: auto !important;
-  overflow-x: hidden !important;
-  /* background: #ccc; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+    /* background-image: url('./assets/background.jpg');
+    background-size: cover; */
+    background: #264348;
+    opacity: 0.9;
 }
 
 .App-header {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-around !important;
-  align-items: center !important;
-  text-align: center !important;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-bottom: 1rem;
+}
 
-  width: 100% !important;
-  height: 17vh !important;
-  z-index: 100 !important;
-  color: #fff !important;
-  /* background: #3232; */
+.header-wrapper {
+    padding: 0.5rem;
+}
+
+.header-wrapper h1 {
+    font-size: 2.3rem;
+    margin-bottom: 0.3rem;
+}
+
+.header-wrapper h3 {
+    margin-bottom: 1rem;
 }
 
 .App-footer {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-around !important;
-  align-items: center !important;
-  text-align: center !important;
-
-  width: 100% !important;
-  height: 7vh !important;
-  z-index: 100 !important;
-  color: #fff !important;
-  /* background: #3232; */
+    margin-top: 2rem;
 }
 
-.App-overlay {
-  position: absolute !important;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: #264348 !important;
-  opacity: 0.825;
-}
 
-/* DASHBOARD STYLES */
-.btn-dashboard {
-  padding: 1.2rem 2.2rem;
-  text-decoration: none;
-  color: #fff;
-  margin: 7px;
-  font-size: 1.5rem;
-  background: transparent;
-}
+/* .App-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #444;
+} */
 
 .btn-dashboard:hover {
-  box-shadow: none;
+    background: #222 !important;
+    color: #fff !important;
+    box-shadow: none !important;
 }
 
-.btn-local-cases {
-  box-shadow: 1px 1px 1px 1px #111;
-}
-
-.btn-global-cases {
-  box-shadow: 1px 1px 1px 1px #111;
-}
-
-@media screen and (max-width: 480px) {
-  .btn-dashboard {
-    display: block;
-    padding: 0.6rem 1.8rem;
-  }
-}
-
-@media screen and (max-width: 575px) {
-  .alert {
-    display: none;
-  }
+@media only screen and (max-width: 450px) {
+    .btn-dashboard {
+        display: block;
+    }
 }

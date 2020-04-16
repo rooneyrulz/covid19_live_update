@@ -7,7 +7,7 @@ const Spinner = ({ path = spinnerPath }) => (
       display: 'block',
       margin: 'auto',
       textAlign: 'center',
-      width: '30px'
+      width: '60px',
     }}
     src={path}
     alt=''
