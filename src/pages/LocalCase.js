@@ -81,7 +81,7 @@ const LocalCase = ({
       </div>
       <br />
       <div className='local-stats'>
-        <h1>Local Stats</h1>
+        <h1>Sri Lanka</h1>
         <br />
         <TopStat
           cases={local_total_cases}
