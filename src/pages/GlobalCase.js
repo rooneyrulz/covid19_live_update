@@ -87,6 +87,7 @@ const GlobalCase = ({
         <br />
         <BottomStat deaths={deaths} recovered={recovered} />
       </div>
+      <br />
       <div className='global-statistic statistic'>
         <h1>Statistics</h1>
         <br />
