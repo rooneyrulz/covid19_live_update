@@ -9,6 +9,7 @@ import TopStat from '../components/TopStat';
 import BottomStat from '../components/BottomStat';
 import SelectOption from '../components/SelectOption';
 import HospitalStat from '../components/HospitalStat';
+import Chart from '../components/Chart';
 import Alert from '../layouts/Alert';
 import Spinner from '../layouts/Spinner';
 
@@ -119,6 +120,17 @@ const LocalCase = ({
             />
           ))}
         </select>
+      </div>
+      <br />
+      <div className='dashboard-statistic statistic'>
+        <h1>Statistics</h1>
+        <br />
+        <Chart
+          confirmed={local_total_cases}
+          active={local_total_cases - local_recovered}
+          death={local_deaths}
+          recovered={local_recovered}
+        />
       </div>
       <br />
       <h3>Last Updates: {update_date_time}</h3>

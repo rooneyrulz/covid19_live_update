@@ -8,6 +8,7 @@ import { getSumOfStats, getAllStatsWithCountry } from '../actions/globalStat';
 import TopStat from '../components/TopStat';
 import BottomStat from '../components/BottomStat';
 import DashboardAction from '../components/DashboardAction';
+import Chart from '../components/Chart';
 import Alert from '../layouts/Alert';
 import Spinner from '../layouts/Spinner';
 
@@ -70,6 +71,17 @@ const Dashboard = ({
         <br />
         <br />
         <BottomStat deaths={deaths} recovered={recovered} />
+      </div>
+      <br />
+      <div className='dashboard-statistic statistic'>
+        <h1>Statistics</h1>
+        <br />
+        <Chart
+          confirmed={cases}
+          active={activeStats}
+          death={deaths}
+          recovered={recovered}
+        />
       </div>
     </div>
   );

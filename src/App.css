@@ -85,6 +85,19 @@ body {
     box-shadow: 1px 1px 1px 1px #222;
 }
 
+.statistic {
+    padding: 2rem 1rem;
+    z-index: 100 !important;
+    width: 100%;
+    background: #555;
+    box-shadow: 1px 1px 1px 1px #222;
+    color: #fff !important;
+}
+
+.chartjs-render-monitor {
+    color: #fff !important;
+}
+
 .btn-dashboard:hover {
     color: #fff !important;
     box-shadow: none !important;

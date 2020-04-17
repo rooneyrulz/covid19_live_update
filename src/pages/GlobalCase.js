@@ -11,6 +11,7 @@ import {
 import TopStat from '../components/TopStat';
 import BottomStat from '../components/BottomStat';
 import SelectOption from '../components/SelectOption';
+import Chart from '../components/Chart';
 import Alert from '../layouts/Alert';
 import Spinner from '../layouts/Spinner';
 
@@ -85,6 +86,16 @@ const GlobalCase = ({
         <br />
         <br />
         <BottomStat deaths={deaths} recovered={recovered} />
+      </div>
+      <div className='global-statistic statistic'>
+        <h1>Statistics</h1>
+        <br />
+        <Chart
+          confirmed={cases}
+          active={active}
+          death={deaths}
+          recovered={recovered}
+        />
       </div>
     </div>
   );
