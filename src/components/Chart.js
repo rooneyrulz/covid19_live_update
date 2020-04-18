@@ -19,28 +19,24 @@ const Chart = ({ confirmed, death, recovered, active }) => {
     setChartData({
       ...chartData,
       ...chartData.data,
-      datasets: confirmed &&
-        death &&
-        recovered &&
-        active && [
-          {
-            data: [confirmed, death, recovered, active],
-            backgroundColor: [
-              'rgba(30, 72, 120, 0.7)',
-              'rgba(176, 19, 16, 0.7)',
-              'rgba(13, 89, 48, 0.7)',
-              'rgba(33, 191, 56, 0.7)',
-            ],
-            hoverBackgroundColor: [
-              'rgba(30, 72, 120)',
-              'rgba(176, 19, 16)',
-              'rgba(13, 89, 48)',
-              'rgba(33, 191, 56)',
-            ],
-          },
-        ],
+      datasets: [
+        {
+          data: [confirmed, death, recovered, active],
+          backgroundColor: [
+            'rgba(30, 72, 120, 0.7)',
+            'rgba(176, 19, 16, 0.7)',
+            'rgba(13, 89, 48, 0.7)',
+            'rgba(33, 191, 56, 0.7)',
+          ],
+          hoverBackgroundColor: [
+            'rgba(30, 72, 120)',
+            'rgba(176, 19, 16)',
+            'rgba(13, 89, 48)',
+            'rgba(33, 191, 56)',
+          ],
+        },
+      ],
     });
-    console.log(confirmed, death, recovered, active);
   }, [confirmed, death, recovered, active]);
 
   return (
@@ -49,6 +45,11 @@ const Chart = ({ confirmed, death, recovered, active }) => {
       options={{
         responsive: true,
         maintainAspectRatio: true,
+        legend: {
+          labels: {
+            fontColor: '#fff',
+          },
+        },
       }}
     />
   );
