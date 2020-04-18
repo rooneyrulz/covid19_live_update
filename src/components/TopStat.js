@@ -24,13 +24,17 @@ const TopStat = ({ cases, active }) => {
         style={(useStyles.caseHeading, useStyles.confirmedHeading)}
         className='case-heading confirmed-heading'
       >
-        Confirmed: {cases}
+        Confirmed:{' '}
+        {cases &&
+          cases.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
       </h2>
       <h2
         style={(useStyles.caseHeading, useStyles.activeHeading)}
         className='case-heading active-heading'
       >
-        Active: {active}
+        Active:{' '}
+        {active &&
+          active.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
       </h2>
     </div>
   );

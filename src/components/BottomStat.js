@@ -24,13 +24,17 @@ const BottomStat = ({ deaths, recovered, local = false }) => {
         style={(useStyles.caseHeading, useStyles.recoveredHeading)}
         className='case-heading recovered-heading'
       >
-        Recovered {local && '& Discharged'}: {recovered}
+        Recovered {local && '& Discharged'}:{' '}
+        {recovered &&
+          recovered.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
       </h2>
       <h2
         style={(useStyles.caseHeading, useStyles.deathHeading)}
         className='case-heading death-heading'
       >
-        Death: {deaths}
+        Death:{' '}
+        {deaths &&
+          deaths.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
       </h2>
     </div>
   );
