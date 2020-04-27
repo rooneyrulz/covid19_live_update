@@ -65,7 +65,7 @@ const GlobalCase = ({
       </div>
       <br />
       <div className='global-main'>
-        <h1>{country}</h1>
+        <h1 className='title'>{country}</h1>
         <br />
         <TopStat cases={cases} active={active} />
         <br />
@@ -89,7 +89,7 @@ const GlobalCase = ({
       </div>
       <br />
       <div className='global-statistic statistic'>
-        <h1>Statistics</h1>
+        <h1 className='title'>Statistics</h1>
         <br />
         <Chart
           confirmed={cases}

@@ -62,7 +62,7 @@ const Dashboard = ({
       </div>
       <br />
       <div className='dashboard-main'>
-        <h1>Global Stats</h1>
+        <h1 className='title'>Global Stats</h1>
         <br />
         <TopStat cases={cases} active={activeStats} />
         <br />
@@ -74,7 +74,7 @@ const Dashboard = ({
       </div>
       <br />
       <div className='dashboard-statistic statistic'>
-        <h1>Statistics</h1>
+        <h1 className='title'>Statistics</h1>
         <br />
         <Chart
           confirmed={cases}

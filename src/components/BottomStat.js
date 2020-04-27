@@ -12,7 +12,7 @@ const BottomStat = ({ deaths, recovered, local = false }) => {
       color: '#26C281',
     },
     recoveredHeading: {
-      color: '#111',
+      color: '#000',
     },
     deathHeading: {
       color: '#e61e2e',
@@ -24,7 +24,7 @@ const BottomStat = ({ deaths, recovered, local = false }) => {
         style={(useStyles.caseHeading, useStyles.recoveredHeading)}
         className='case-heading recovered-heading'
       >
-        Recovered {local && '& Discharged'}:{' '}
+        {local ? 'Discharged' : 'Recovered'}:{' '}
         {recovered &&
           recovered.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
       </h2>

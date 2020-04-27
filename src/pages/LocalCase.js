@@ -82,7 +82,7 @@ const LocalCase = ({
       </div>
       <br />
       <div className='local-stats'>
-        <h1>Sri Lanka</h1>
+        <h1 className='title'>Sri Lanka</h1>
         <br />
         <TopStat
           cases={local_total_cases}
@@ -97,7 +97,7 @@ const LocalCase = ({
       </div>
       <br />
       <div className='local-hospital-stats'>
-        <h1>Hospital Stats</h1>
+        <h1 className='title'>Hospital Stats</h1>
         <br />
         {hospital && (
           <HospitalStat
@@ -123,7 +123,7 @@ const LocalCase = ({
       </div>
       <br />
       <div className='dashboard-statistic statistic'>
-        <h1>Statistics</h1>
+        <h1 className='title'>Statistics</h1>
         <br />
         <Chart
           confirmed={local_total_cases}

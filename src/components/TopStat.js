@@ -12,7 +12,7 @@ const TopStat = ({ cases, active }) => {
       color: '#26C281',
     },
     recoveredHeading: {
-      color: '#111',
+      color: '#000',
     },
     deathHeading: {
       color: '#e61e2e',

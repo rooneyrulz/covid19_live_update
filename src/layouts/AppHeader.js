@@ -13,7 +13,7 @@ const AppHeader = () => {
 
   return (
     <div className='header-wrapper'>
-      <h1>COVID-19 LIVE</h1>
+      <h1 className='title'>COVID-19 LIVE</h1>
       <NavLink style={styles.navLink} exact to='/'>
         {' '}
         Home

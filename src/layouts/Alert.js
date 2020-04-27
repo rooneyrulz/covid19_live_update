@@ -49,7 +49,7 @@ const Alert = ({
       )}
       {local && type === 'suspected' && (
         <div className='alert' style={useStyles.suspectedAlert}>
-          <span>Suspected Cases: +{suspectedCases}</span>
+          <span>Total Suspected Cases: +{suspectedCases}</span>
         </div>
       )}
     </Fragment>
