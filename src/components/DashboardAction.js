@@ -10,7 +10,7 @@ const DashboardAction = () => {
       color: '#000',
       padding: '.65rem 3rem',
       borderRadius: '2em',
-      boxShadow: '1px 1px 1px 1px #111',
+      boxShadow: '1.3px 1.3px 1px #111',
       margin: '.3em',
     },
     btnGlobal: {
@@ -20,7 +20,7 @@ const DashboardAction = () => {
       color: '#000',
       padding: '.65rem 3rem',
       borderRadius: '2em',
-      boxShadow: '1px 1px 1px 1px #111',
+      boxShadow: '1.3px 1.3px 1px #111',
       margin: '.3em',
     },
   };

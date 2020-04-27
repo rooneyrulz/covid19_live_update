@@ -13,7 +13,7 @@ const Alert = ({
       color: '#fff',
       padding: '.5rem 1.2rem',
       borderRadius: '2.5em',
-      boxShadow: '1px 1px 1px 1px #111',
+      boxShadow: '1px 1px 1px #111',
       margin: '.4rem auto',
     },
     deathAlert: {
@@ -22,7 +22,7 @@ const Alert = ({
       color: '#fff',
       padding: '.5rem 1.2rem',
       borderRadius: '2.5em',
-      boxShadow: '1px 1px 1px 1px #111',
+      boxShadow: '1px 1px 1px #111',
       margin: '.4rem auto',
     },
     suspectedAlert: {
@@ -31,7 +31,7 @@ const Alert = ({
       color: '#fff',
       padding: '.5rem 1.2rem',
       borderRadius: '2.5em',
-      boxShadow: '1px 1px 1px 1px #111',
+      boxShadow: '1px 1px 1px #111',
       margin: '.4rem auto',
     },
   };
