@@ -96,8 +96,8 @@ body {
 }
 
 .btn-dashboard {
-    background: linear-gradient(120deg, #fff, #222) !important;
-    color: #000 !important;
+    background: linear-gradient(120deg, #999, #444, #222) !important;
+    color: #fff !important;
     outline: none !important;
     border: none !important;
     transition: all 0.4s ease !important;
