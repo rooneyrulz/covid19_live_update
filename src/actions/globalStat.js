@@ -12,6 +12,7 @@ export const getSumOfStats = () => async (dispatch) => {
   const config = {
     header: {
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
     },
   };
 
@@ -27,6 +28,7 @@ export const getAllStatsWithCountry = () => async (dispatch) => {
   const config = {
     header: {
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
     },
   };
 
@@ -42,6 +44,7 @@ export const getStatByCountry = (country) => async (dispatch) => {
   const config = {
     header: {
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
     },
   };
 
