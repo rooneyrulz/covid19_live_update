@@ -60,22 +60,14 @@ const Dashboard = ({
         <Alert type='confirmed' cases={newConfirmedStats} />
         <Alert type='death' cases={newDeathStats} />
       </div>
-      <br />
-      <div className='dashboard-main'>
-        <h1 className='title'>Global Stats</h1>
-        <br />
+      <div className='dashboard-main flow'>
+        <h2 className='title'>Global Stats</h2>
         <TopStat cases={cases} active={activeStats} />
-        <br />
-        <br />
-        <DashboardAction />
-        <br />
-        <br />
         <BottomStat deaths={deaths} recovered={recovered} />
+        <DashboardAction />
       </div>
-      <br />
-      <div className='dashboard-statistic statistic'>
-        <h1 className='title'>Statistics</h1>
-        <br />
+      <div className='dashboard-statistic statistic flow'>
+        <h2 className='title'>Statistics</h2>
         <Chart
           confirmed={cases}
           active={activeStats}

@@ -19,23 +19,23 @@ const TopStat = ({ cases, active }) => {
     },
   };
   return (
-    <div className='top'>
-      <h2
+    <div className='top flow'>
+      <h4
         style={(useStyles.caseHeading, useStyles.confirmedHeading)}
         className='case-heading confirmed-heading'
       >
         Confirmed:{' '}
         {cases &&
           cases.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
-      </h2>
-      <h2
+      </h4>
+      <h4
         style={(useStyles.caseHeading, useStyles.activeHeading)}
         className='case-heading active-heading'
       >
         Active:{' '}
         {active &&
           active.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
-      </h2>
+      </h4>
     </div>
   );
 };

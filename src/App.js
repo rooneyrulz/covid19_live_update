@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import './App.css';
+import './main.css';
 
 // REDUX
 import { Provider } from 'react-redux';
@@ -18,25 +18,18 @@ const App = () => {
   return (
     <Provider store={Store}>
       <Router>
-        <Fragment>
-          <div className='App'>
-            <div className='App-header-wrapper'>
-              <header className='App-header'>
-                <AppHeader />
-              </header>
-              <br />
-              <Spinner path={path} />
-            </div>
-            <br />
-            <main className='App-main'>
-              <Route component={Routes} />
-            </main>
-            <br />
-            <footer className='App-footer'>
-              <AppFooter />
-            </footer>
-          </div>
-        </Fragment>
+        <div className='App App-container'>
+          <header className='App-header container'>
+            <AppHeader />
+          </header>
+          <main className='App-main container'>
+            <Spinner path={path} />
+            <Route component={Routes} />
+          </main>
+          <footer className='App-footer container'>
+            <AppFooter />
+          </footer>
+        </div>
       </Router>
     </Provider>
   );

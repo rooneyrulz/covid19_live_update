@@ -17,16 +17,6 @@ const LocalCase = ({
   stat: { loading, allStats, hospitalStats },
   getLocalStats,
 }) => {
-  const useStyles = {
-    countrySelect: {
-      width: '60%',
-      height: '50px',
-      fontSize: '1.4rem',
-      border: 'none',
-      outline: 'none',
-    },
-  };
-
   const [hospitals, setHospitals] = useState([]);
   const [hospitaldata, setHospitalData] = useState({});
 
@@ -80,10 +70,8 @@ const LocalCase = ({
           suspectedCases={local_total_number_of_individuals_in_hospitals}
         />
       </div>
-      <br />
-      <div className='local-stats'>
-        <h1 className='title'>Sri Lanka</h1>
-        <br />
+      <div className='local-stats flow'>
+        <h2 className='title'>Sri Lanka</h2>
         <TopStat
           cases={local_total_cases}
           active={local_total_cases - local_recovered}
@@ -93,12 +81,9 @@ const LocalCase = ({
           deaths={local_deaths}
           recovered={local_recovered}
         />
-        <br />
       </div>
-      <br />
-      <div className='local-hospital-stats'>
-        <h1 className='title'>Hospital Stats</h1>
-        <br />
+      <div className='local-hospital-stats flow'>
+        <h2 className='title'>Hospital Stats</h2>
         {hospital && (
           <HospitalStat
             name={hospital.name}
@@ -107,11 +92,7 @@ const LocalCase = ({
             treatment_foreign={treatment_foreign}
           />
         )}
-        <select
-          className='select'
-          onChange={(e) => onChange(e)}
-          style={useStyles.countrySelect}
-        >
+        <select className='select' onChange={(e) => onChange(e)}>
           {hospitals.map((hospital) => (
             <SelectOption
               key={hospital.id}
@@ -121,10 +102,8 @@ const LocalCase = ({
           ))}
         </select>
       </div>
-      <br />
-      <div className='dashboard-statistic statistic'>
-        <h1 className='title'>Statistics</h1>
-        <br />
+      <div className='dashboard-statistic statistic flow'>
+        <h2 className='title'>Statistics</h2>
         <Chart
           confirmed={local_total_cases}
           active={local_total_cases - local_recovered}
@@ -132,8 +111,7 @@ const LocalCase = ({
           recovered={local_recovered}
         />
       </div>
-      <br />
-      <h3>Last Updates: {update_date_time}</h3>
+      <h4>Last Updates: {update_date_time}</h4>
     </div>
   );
 };

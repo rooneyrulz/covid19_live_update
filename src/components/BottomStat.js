@@ -19,23 +19,23 @@ const BottomStat = ({ deaths, recovered, local = false }) => {
     },
   };
   return (
-    <div className='bottom'>
-      <h2
+    <div className='bottom flow'>
+      <h4
         style={(useStyles.caseHeading, useStyles.recoveredHeading)}
         className='case-heading recovered-heading'
       >
         {local ? 'Discharged' : 'Recovered'}:{' '}
         {recovered &&
           recovered.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
-      </h2>
-      <h2
+      </h4>
+      <h4
         style={(useStyles.caseHeading, useStyles.deathHeading)}
         className='case-heading death-heading'
       >
         Death:{' '}
         {deaths &&
           deaths.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
-      </h2>
+      </h4>
     </div>
   );
 };
