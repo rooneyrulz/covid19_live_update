@@ -23,10 +23,80 @@ h1,
 h2,
 h3,
 h4,
+.alert,
 h5,
 h6,
 p {
   margin: 0;
+}
+
+h1 {
+  font-size: clamp(1.5rem, calc(5vw+0.5rem), 3.5rem);
+  letter-spacing: 0.75rem;
+  text-align: center;
+  color: #ffffff;
+}
+
+h2 {
+  font-size: clamp(1.5rem, calc(5vw+0.5rem), 2.5rem);
+  font-weight: 500;
+  letter-spacing: 0.25rem;
+  color: #ffffff;
+}
+
+h3 {
+  font-size: clamp(1rem, calc(5vw+0.25rem), 1.5rem);
+  font-weight: 400;
+  letter-spacing: 0.25rem;
+  color: #ffffff;
+}
+
+
+h4,
+.alert {
+  font-size: clamp(0.5rem, calc(5vw+0.25rem), 1rem);
+  font-weight: 400;
+  letter-spacing: 0.15rem;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+h4:hover, .alert:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+p {
+  font-size: clamp(0.35rem, calc(5vw+0.25rem), 1rem);
+  letter-spacing: 0.25rem;
+  font-weight: 400;
+  line-height: 2;
+  color: #ffffff;
+}
+
+select {
+  width: 70%;
+  height: 40px;
+  outline: none;
+  border-radius: 0.25em;
+  font-size: clamp(0.5rem, calc(5vw+0.25rem), 1rem);
+  font-weight: 400;
+  background: transparent;
+  color: #ffffff;
+}
+
+select option {
+  background: #111;
+  color: #ffffff;
+}
+
+.alert {
+  margin: 0.5rem auto;
+  width: 50%;
+  padding: 0.5rem;
+  border-radius: 0.25em;
+  color: #ffffff;
 }
 
 .flow > * + * {
@@ -44,10 +114,12 @@ p {
 }
 
 .btn {
-  padding: 1rem 1.75rem;
+  padding: 1rem 2rem;
   background: #333;
   border-radius: 0.25rem;
   display: inline-block;
+  font-size: clamp(0.5rem, calc(5vw+0.25rem), 1rem);
+  letter-spacing: 0.15rem;
   -webkit-transition: opacity 0.3s linear, -webkit-transform 0.3s ease-in;
   transition: opacity 0.3s linear, -webkit-transform 0.3s ease-in;
   transition: transform 0.3s ease-in, opacity 0.3s linear;
@@ -63,15 +135,15 @@ p {
 }
 
 .App {
-  background: url("./assets/background.jpg"), radial-gradient(#444, #111);
+  background: url("./assets/background.jpg"), radial-gradient(#555, #000);
   background-size: cover;
-  background-position: center;
+  background-position: top;
   background-repeat: no-repeat;
   background-blend-mode: multiply;
+  background-attachment: fixed;
 }
 
 .App-header {
-  margin-bottom: 4rem;
   height: 20vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -88,22 +160,21 @@ p {
   color: #ffffff;
 }
 
-.App-header h1 {
-  font-size: clamp(1.5rem, calc(5vw+0.5rem), 3.5rem);
-  letter-spacing: 0.75rem;
-  text-align: center;
-}
-
 .App-header a {
   font-size: clamp(1rem, calc(5vw+0.25rem), 1.5rem);
   text-decoration: none;
   color: #ffffff;
 }
 
+.App-main {
+  margin: 3rem auto;
+}
+
 .App-main .img-GIF {
   margin: auto;
   text-align: center;
-  width: clamp(60px, calc(15vw+10px), 80px);
+  width: clamp(60px, calc(15vw+10px), 100px);
+  border-radius: 50%;
 }
 
 .App-main .Dashboard {
@@ -113,27 +184,6 @@ p {
 
 .App-main .Dashboard .dashboard-main {
   margin: 4rem auto;
-}
-
-.App-main .Dashboard .dashboard-main .title {
-  font-size: clamp(1.5rem, calc(5vw+0.5rem), 2.5rem);
-  font-weight: 500;
-  letter-spacing: 0.25rem;
-  color: #ffffff;
-}
-
-.App-main .Dashboard .dashboard-main h4 {
-  font-size: clamp(0.5rem, calc(5vw+0.25rem), 1rem);
-  font-weight: 400;
-  letter-spacing: 0.15rem;
-  cursor: pointer;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-.App-main .Dashboard .dashboard-main h4:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
 }
 
 .App-main .Dashboard .dashboard-main .btn-group {
@@ -157,21 +207,34 @@ p {
 }
 
 .App-main .Dashboard .dashboard-main .btn-group a {
-  font-size: clamp(0.5rem, calc(5vw+0.25rem), 1rem);
-  letter-spacing: 0.15rem;
   text-decoration: none;
   color: #ffffff;
 }
 
-.App-main .Dashboard .dashboard-statistic .title {
-  font-size: clamp(1.5rem, calc(5vw+0.5rem), 2.5rem);
-  font-weight: 500;
-  letter-spacing: 0.25rem;
-  color: #ffffff;
+.App-main .LocalCases {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.App-main .LocalCases .local-stats {
+  margin: 4rem auto;
+}
+
+.App-main .LocalCases .local-hospital-stats {
+  margin-bottom: 4rem;
+}
+
+.App-main .GlobalCases {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.App-main .GlobalCases .global-main {
+  margin: 4rem auto;
 }
 
 .App-footer {
-  height: 17vh;
+  height: 20vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -187,11 +250,4 @@ p {
           align-items: center;
   text-align: center;
   color: #ffffff;
-}
-
-.App-footer p {
-  font-size: clamp(0.5rem, calc(5vw+0.25rem), 1rem);
-  letter-spacing: 0.25rem;
-  font-weight: 400;
-  line-height: 2;
 }

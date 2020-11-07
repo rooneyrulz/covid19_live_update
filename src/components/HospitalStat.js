@@ -8,7 +8,6 @@ const HospitalStat = ({
 }) => {
   const useStyles = {
     caseHeading: {
-      fontWeight: '100',
       color: '#fff',
     },
     totalHeading: {
@@ -22,25 +21,23 @@ const HospitalStat = ({
     },
   };
   return (
-    <div>
-      <h2>{name}</h2>
-      <br />
-      <h2
+    <div className='flow'>
+      <h3>{name}</h3>
+      <h4
         style={useStyles.totalHeading}
         className='case-heading recovered-heading'
       >
         Total: {treatment_total}
-      </h2>
-      <h2 style={useStyles.localHeading} className='case-heading death-heading'>
+      </h4>
+      <h4 style={useStyles.localHeading} className='case-heading death-heading'>
         Locals: {treatment_local}
-      </h2>
-      <h2
+      </h4>
+      <h4
         style={useStyles.foriegnerHeading}
         className='case-heading death-heading'
       >
         Foreigners: {treatment_foreign}
-      </h2>
-      <br />
+      </h4>
     </div>
   );
 };

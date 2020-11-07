@@ -11,7 +11,7 @@ import Routes from './components/routing/Routes';
 import AppHeader from './layouts/AppHeader';
 import AppFooter from './layouts/AppFooter';
 
-import path from './assets/earth.gif';
+import path from './assets/gif.gif';
 import Spinner from './layouts/Spinner';
 
 const App = () => {
@@ -19,16 +19,19 @@ const App = () => {
     <Provider store={Store}>
       <Router>
         <div className='App App-container'>
-          <header className='App-header container'>
-            <AppHeader />
-          </header>
-          <main className='App-main container'>
-            <Spinner path={path} />
-            <Route component={Routes} />
-          </main>
-          <footer className='App-footer container'>
-            <AppFooter />
-          </footer>
+          <div className='container'>
+            <header className='App-header'>
+              <AppHeader />
+            </header>
+            <main className='App-main'>
+              <Spinner path={path} />
+              <Route component={Routes} />
+            </main>
+            <hr />
+            <footer className='App-footer'>
+              <AppFooter />
+            </footer>
+          </div>
         </div>
       </Router>
     </Provider>

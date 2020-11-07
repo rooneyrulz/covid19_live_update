@@ -102,6 +102,7 @@ const LocalCase = ({
           ))}
         </select>
       </div>
+      <hr />
       <div className='dashboard-statistic statistic flow'>
         <h2 className='title'>Statistics</h2>
         <Chart
@@ -110,8 +111,9 @@ const LocalCase = ({
           death={local_deaths}
           recovered={local_recovered}
         />
+        <br />
+        <p>Last Updates: {update_date_time}</p>
       </div>
-      <h4>Last Updates: {update_date_time}</h4>
     </div>
   );
 };

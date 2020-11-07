@@ -20,16 +20,6 @@ const GlobalCase = ({
   getAllStatsWithCountry,
   getStatByCountry,
 }) => {
-  const useStyles = {
-    countrySelect: {
-      width: '60%',
-      height: '50px',
-      fontSize: '1.4rem',
-      border: 'none',
-      outline: 'none',
-    },
-  };
-
   const [countries, setCountries] = useState([]);
 
   useEffect(() => {
@@ -64,15 +54,14 @@ const GlobalCase = ({
         <Alert type='death' cases={todayDeaths} />
       </div>
       <br />
-      <div className='global-main'>
-        <h1 className='title'>{country}</h1>
-        <br />
+      <div className='global-main flow'>
+        <h2 className='title'>{country}</h2>
         <TopStat cases={cases} active={active} />
-        <br />
+        <BottomStat deaths={deaths} recovered={recovered} />
         <select
           id='select-country'
+          className='select'
           onChange={(e) => onChange(e)}
-          style={useStyles.countrySelect}
         >
           <Fragment>
             <option default={true} value='USA'>
@@ -83,14 +72,10 @@ const GlobalCase = ({
             ))}
           </Fragment>
         </select>
-        <br />
-        <br />
-        <BottomStat deaths={deaths} recovered={recovered} />
       </div>
-      <br />
-      <div className='global-statistic statistic'>
-        <h1 className='title'>Statistics</h1>
-        <br />
+      <hr />
+      <div className='global-statistic statistic flow'>
+        <h2 className='title'>Statistics</h2>
         <Chart
           confirmed={cases}
           active={active}

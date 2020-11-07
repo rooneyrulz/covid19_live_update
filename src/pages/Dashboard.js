@@ -66,6 +66,7 @@ const Dashboard = ({
         <BottomStat deaths={deaths} recovered={recovered} />
         <DashboardAction />
       </div>
+      <hr />
       <div className='dashboard-statistic statistic flow'>
         <h2 className='title'>Statistics</h2>
         <Chart
