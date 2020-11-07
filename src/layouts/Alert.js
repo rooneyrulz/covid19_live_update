@@ -8,30 +8,30 @@ const Alert = ({
 }) => {
   const useStyles = {
     confirmedAlert: {
-      background: '#114680',
+      background: '#003380',
     },
     deathAlert: {
-      background: '#C3272B',
+      background: '#e61e2e',
     },
     suspectedAlert: {
-      background: '#368a33',
+      background: '#269900',
     },
   };
   return (
     <Fragment>
       {type === 'confirmed' && (
         <div className='alert' style={useStyles.confirmedAlert}>
-          <span>New Stats: +{cases}</span>
+          <span>New Stats +{cases}</span>
         </div>
       )}
       {type === 'death' && (
         <div className='alert' style={useStyles.deathAlert}>
-          <span>New Deaths: +{cases}</span>
+          <span>New Deaths +{cases}</span>
         </div>
       )}
       {local && type === 'suspected' && (
         <div className='alert' style={useStyles.suspectedAlert}>
-          <span>Total Suspected Cases: +{suspectedCases}</span>
+          <span>Total Suspected Cases +{suspectedCases}</span>
         </div>
       )}
     </Fragment>

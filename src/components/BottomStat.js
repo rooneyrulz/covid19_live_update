@@ -12,7 +12,7 @@ const BottomStat = ({ deaths, recovered, local = false }) => {
       color: '#26C281',
     },
     recoveredHeading: {
-      color: '#000',
+      color: '#999',
     },
     deathHeading: {
       color: '#e61e2e',
@@ -24,7 +24,7 @@ const BottomStat = ({ deaths, recovered, local = false }) => {
         style={(useStyles.caseHeading, useStyles.recoveredHeading)}
         className='case-heading recovered-heading'
       >
-        {local ? 'Discharged' : 'Recovered'}:{' '}
+        {local ? 'Discharged' : 'Recovered'} -{' '}
         {recovered &&
           recovered.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
       </h4>
@@ -32,7 +32,7 @@ const BottomStat = ({ deaths, recovered, local = false }) => {
         style={(useStyles.caseHeading, useStyles.deathHeading)}
         className='case-heading death-heading'
       >
-        Death:{' '}
+        Death -{' '}
         {deaths &&
           deaths.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
       </h4>

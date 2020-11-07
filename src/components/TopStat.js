@@ -12,7 +12,7 @@ const TopStat = ({ cases, active }) => {
       color: '#26C281',
     },
     recoveredHeading: {
-      color: '#000',
+      color: '#999',
     },
     deathHeading: {
       color: '#e61e2e',
@@ -24,7 +24,7 @@ const TopStat = ({ cases, active }) => {
         style={(useStyles.caseHeading, useStyles.confirmedHeading)}
         className='case-heading confirmed-heading'
       >
-        Confirmed:{' '}
+        Confirmed -{' '}
         {cases &&
           cases.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
       </h4>
@@ -32,7 +32,7 @@ const TopStat = ({ cases, active }) => {
         style={(useStyles.caseHeading, useStyles.activeHeading)}
         className='case-heading active-heading'
       >
-        Active:{' '}
+        Active -{' '}
         {active &&
           active.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
       </h4>

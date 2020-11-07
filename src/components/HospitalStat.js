@@ -17,7 +17,7 @@ const HospitalStat = ({
       color: '#26C281',
     },
     foriegnerHeading: {
-      color: '#111',
+      color: '#3333ff ',
     },
   };
   return (
@@ -27,16 +27,16 @@ const HospitalStat = ({
         style={useStyles.totalHeading}
         className='case-heading recovered-heading'
       >
-        Total: {treatment_total}
+        Total - {treatment_total}
       </h4>
       <h4 style={useStyles.localHeading} className='case-heading death-heading'>
-        Locals: {treatment_local}
+        Locals - {treatment_local}
       </h4>
       <h4
         style={useStyles.foriegnerHeading}
         className='case-heading death-heading'
       >
-        Foreigners: {treatment_foreign}
+        Foreigners - {treatment_foreign}
       </h4>
     </div>
   );

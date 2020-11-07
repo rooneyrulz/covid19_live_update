@@ -4,8 +4,8 @@ const AppFooter = () => {
   return (
     <>
       <p>
-        <strong>COVID-19 Live Tracker</strong> All Rights Reserved To{' '}
-        <strong>DevRulz@Programmer.rulz</strong>
+        <strong>COVID-19 Tracker</strong> All Rights Reserved To{' '}
+        <strong>Ruzny</strong>
       </p>
     </>
   );

@@ -9,7 +9,7 @@ body {
     line-height: 1.6;
     font-size: 1rem;
     font-weight: 400;
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Lato', sans-serif;
     overflow-x: hidden;
 }
 
@@ -30,6 +30,7 @@ p {
 
 h1 {
     font-size: clamp(1.5rem, calc(5vw+0.5rem), 3.5rem);
+    line-height: 2;
     letter-spacing: 0.75rem;
     text-align: center;
     color: #ffffff;
@@ -55,7 +56,8 @@ h4 {
     letter-spacing: 0.15rem;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    &:hover {
+    &:hover,
+    &:focus {
         transform: scale(1.1);
     }
 }
@@ -65,6 +67,12 @@ p {
     letter-spacing: 0.25rem;
     font-weight: 400;
     line-height: 2;
+    color: #ffffff;
+}
+
+a {
+    font-size: clamp(1rem, calc(5vw+0.25rem), 1.5rem);
+    text-decoration: none;
     color: #ffffff;
 }
 
@@ -123,12 +131,15 @@ select {
 }
 
 .App {
-    background: url('./assets/background.jpg'), radial-gradient(#555, #000);
-    background-size: cover;
-    background-position: top;
-    background-repeat: no-repeat;
-    background-blend-mode: multiply;
-    background-attachment: fixed;
+    background: #111;
+    @supports (background-blend-mode: multiply) {
+        background: url('./assets/background.jpg'), radial-gradient(#555, #000);
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
+        background-blend-mode: multiply;
+        background-attachment: fixed;
+    }
 }
 
 // Header Styles
@@ -139,11 +150,6 @@ select {
     justify-content: space-around;
     align-items: center;
     color: #ffffff;
-    a {
-        font-size: clamp(1rem, calc(5vw+0.25rem), 1.5rem);
-        text-decoration: none;
-        color: #ffffff;
-    }
 }
 
 // Main Styles
@@ -152,8 +158,8 @@ select {
     .img-GIF {
         margin: auto;
         text-align: center;
-        width: clamp(60px, calc(15vw+10px), 100px);
-        border-radius: 50%;
+        width: clamp(60px, calc(5vw+5px), 80px);
+        border-radius: 5%;
     }
     .Dashboard {
         margin-top: 4rem;
@@ -168,9 +174,11 @@ select {
                 align-items: center;
                 flex-wrap: wrap;
                 gap: 2em;
-                a {
-                    text-decoration: none;
-                    color: #ffffff;
+                .btn-local {
+                    background: #003380;
+                }
+                .btn-global {
+                    background: #00802b;
                 }
             }
         }
