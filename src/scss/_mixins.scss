@@ -1,0 +1,26 @@
+@mixin d-fex($direction, $justify, $align, $wrap, $gap) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    flex-wrap: $wrap;
+    gap: $gap;
+}
+
+@mixin background-img($source, $size, $position, $repeat, $mode, $attachment) {
+    @supports (background-blend-mode: multiply) {
+        background: $source;
+        background-size: $size;
+        background-position: $position;
+        background-repeat: $repeat;
+        background-blend-mode: $mode;
+        background-attachment: $attachment;
+    }
+}
+
+@mixin show-transition($property, $duration, $timing, $delay) {
+    transition-property: $property;
+    transition-duration: $duration;
+    transition-timing-function: $timing;
+    transition-delay: $delay;
+}

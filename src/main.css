@@ -142,18 +142,12 @@ select option {
 }
 
 .App {
-  background: #111;
-}
-
-@supports (background-blend-mode: multiply) {
-  .App {
-    background: url("./assets/background.jpg"), radial-gradient(#555, #000);
-    background-size: cover;
-    background-position: top;
-    background-repeat: no-repeat;
-    background-blend-mode: multiply;
-    background-attachment: fixed;
-  }
+  background: url("./assets/background.jpg"), radial-gradient(#444, #111111);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: multiply;
+  background-attachment: fixed;
 }
 
 .App-header {

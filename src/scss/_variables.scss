@@ -1,0 +1,7 @@
+$light-color: #ffffff;
+$dark-color: #111111;
+$blue-color: #003380;
+$green-color: #00802b;
+$dark-grey: #555555;
+$font-weights: ( 'regular': 400, 'bold': 500, );
+$font-sizes: ( 'font-size-h1': clamp(1.5rem, calc(5vw+0.5rem), 3.5rem), 'font-size-h2': clamp(1.5rem, calc(5vw+0.5rem), 2.5rem), 'font-size-h3': clamp(1rem, calc(5vw+0.25rem), 1.5rem), 'font-size-h4': clamp(0.5rem, calc(5vw+0.25rem), 1rem), 'font-size-paragraph': clamp(0.35rem, calc(5vw+0.25rem), 1rem), 'font-size-link': clamp(1rem, calc(5vw+0.25rem), 1.5rem), );
