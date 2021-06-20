@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 // REDUX
-import { connect } from 'react-redux';
-import { getSumOfStats, getAllStatsWithCountry } from '../actions/globalStat';
+import { connect } from "react-redux";
+import { getSumOfStats, getAllStatsWithCountry } from "../actions/globalStat";
 
-import TopStat from '../components/TopStat';
-import BottomStat from '../components/BottomStat';
-import DashboardAction from '../components/DashboardAction';
-import Chart from '../components/Chart';
-import Alert from '../layouts/Alert';
-import Spinner from '../layouts/Spinner';
+import TopStat from "../components/TopStat";
+import BottomStat from "../components/BottomStat";
+import DashboardAction from "../components/DashboardAction";
+import Chart from "../components/Chart";
+import Alert from "../layouts/Alert";
 
 const Dashboard = ({
   stats: {
@@ -52,9 +51,7 @@ const Dashboard = ({
     setNewDeathStats(loading ? null : totalTodayDeathStats);
   }, [getSumOfStats, getAllStatsWithCountry, loading, stats]);
 
-  return loading ? (
-    <Spinner />
-  ) : (
+  return (
     <div className='Dashboard'>
       <div className='alert-wrapper'>
         <Alert type='confirmed' cases={newConfirmedStats} />

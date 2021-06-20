@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Doughnut } from 'react-chartjs-2';
+import React, { useState, useEffect } from "react";
+import { Doughnut } from "react-chartjs-2";
 
 const Chart = ({ confirmed, death, recovered, active }) => {
   const [chartData, setChartData] = useState({
@@ -12,7 +12,7 @@ const Chart = ({ confirmed, death, recovered, active }) => {
         },
       ],
     },
-    labels: ['Confirmed', 'Deaths', 'Recovered', 'Active'],
+    labels: ["Confirmed", "Deaths", "Recovered", "Active"],
   });
 
   useEffect(() => {
@@ -23,16 +23,16 @@ const Chart = ({ confirmed, death, recovered, active }) => {
         {
           data: [confirmed, death, recovered, active],
           backgroundColor: [
-            'rgba(30, 72, 120, 0.7)',
-            'rgba(176, 19, 16, 0.7)',
-            'rgba(13, 89, 48, 0.7)',
-            'rgba(33, 191, 56, 0.7)',
+            "rgba(30, 72, 120, 0.7)",
+            "rgba(176, 19, 16, 0.7)",
+            "rgba(13, 89, 48, 0.7)",
+            "rgba(33, 191, 56, 0.7)",
           ],
           hoverBackgroundColor: [
-            'rgba(30, 72, 120)',
-            'rgba(176, 19, 16)',
-            'rgba(13, 89, 48)',
-            'rgba(33, 191, 56)',
+            "rgba(30, 72, 120)",
+            "rgba(176, 19, 16)",
+            "rgba(13, 89, 48)",
+            "rgba(33, 191, 56)",
           ],
         },
       ],
@@ -47,7 +47,7 @@ const Chart = ({ confirmed, death, recovered, active }) => {
         maintainAspectRatio: true,
         legend: {
           labels: {
-            fontColor: '#fff',
+            fontColor: "#fff",
           },
         },
         tooltips: {
@@ -60,7 +60,7 @@ const Chart = ({ confirmed, death, recovered, active }) => {
               var percentage = parseFloat(
                 ((currentValue / total) * 100).toFixed(1)
               );
-              return currentValue + ' (' + percentage + '%)';
+              return currentValue + " (" + percentage + "%)";
             },
             title: function (tooltipItem, data) {
               return data.labels[tooltipItem[0].index];

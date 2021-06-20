@@ -1,9 +1,9 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
 
-import Dashboard from '../../pages/Dashboard';
-import LocalCase from '../../pages/LocalCase';
-import GlobalCase from '../../pages/GlobalCase';
+const Dashboard = React.lazy(() => import("../../pages/Dashboard"));
+const LocalCase = React.lazy(() => import("../../pages/LocalCase"));
+const GlobalCase = React.lazy(() => import("../../pages/GlobalCase"));
 
 const Routes = () => (
   <Switch>

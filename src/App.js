@@ -1,17 +1,17 @@
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 // REDUX
-import { Provider } from 'react-redux';
-import Store from './store';
+import { Provider } from "react-redux";
+import Store from "./store";
 
 // COMPONENTS
-import Routes from './components/routing/Routes';
-import AppHeader from './layouts/AppHeader';
-import AppFooter from './layouts/AppFooter';
+import Routes from "./components/routing/Routes";
+import AppHeader from "./layouts/AppHeader";
+import AppFooter from "./layouts/AppFooter";
 
-import path from './assets/gif.gif';
-import Spinner from './layouts/Spinner';
+import path from "./assets/gif.gif";
+import Spinner from "./layouts/Spinner";
 
 const App = () => {
   return (

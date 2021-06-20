@@ -1,20 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
 
-    <title>COVID-19 Live</title>
-</head>
+    <title>Covid19 Tracker</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
 
-<body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+      body {
+        margin: 0;
+        line-height: 1.6;
+        font-size: 1rem;
+        font-weight: 400;
+        font-family: "Roboto", sans-serif;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      .alert,
+      h5,
+      h6,
+      p {
+        margin: 0;
+      }
+      .App {
+        background: url("./background.jpg"), radial-gradient(#444, #111111);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-blend-mode: multiply;
+        background-attachment: fixed;
+      }
+    </style>
+  </head>
+
+  <body>
+    <noscript
+      >Oops! Seems your browser does not support JavaScript. Please enable
+      JavaScript or Use a different browser.</noscript
+    >
     <div id="covid_19_live"></div>
-</body>
-
+  </body>
 </html>

@@ -1,19 +1,18 @@
-import React, { useState, useEffect, Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect, Fragment } from "react";
+import PropTypes from "prop-types";
 
 // REDUX
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import {
   getAllStatsWithCountry,
   getStatByCountry,
-} from '../actions/globalStat';
+} from "../actions/globalStat";
 
-import TopStat from '../components/TopStat';
-import BottomStat from '../components/BottomStat';
-import SelectOption from '../components/SelectOption';
-import Chart from '../components/Chart';
-import Alert from '../layouts/Alert';
-import Spinner from '../layouts/Spinner';
+import TopStat from "../components/TopStat";
+import BottomStat from "../components/BottomStat";
+import SelectOption from "../components/SelectOption";
+import Chart from "../components/Chart";
+import Alert from "../layouts/Alert";
 
 const GlobalCase = ({
   stats: { stats, stat, loading },
@@ -28,36 +27,27 @@ const GlobalCase = ({
   }, [getAllStatsWithCountry, loading, stats]);
 
   useEffect(() => {
-    getStatByCountry('USA');
+    getStatByCountry("USA");
   }, [getStatByCountry]);
 
   const onChange = (e) => {
     getStatByCountry(e.target.value);
   };
 
-  const {
-    country,
-    cases,
-    deaths,
-    recovered,
-    active,
-    todayCases,
-    todayDeaths,
-  } = stat;
+  const { country, cases, deaths, recovered, active, todayCases, todayDeaths } =
+    stat;
 
-  return loading ? (
-    <Spinner />
-  ) : (
+  return (
     <div className='GlobalCases'>
       <div className='alert-wrapper'>
-        <Alert type='confirmed' cases={todayCases} />
-        <Alert type='death' cases={todayDeaths} />
+        <Alert type='confirmed' cases={todayCases} loading={loading} />
+        <Alert type='death' cases={todayDeaths} loading={loading} />
       </div>
       <br />
       <div className='global-main flow'>
         <h2 className='title'>{country}</h2>
-        <TopStat cases={cases} active={active} />
-        <BottomStat deaths={deaths} recovered={recovered} />
+        <TopStat cases={cases} active={active} loading={loading} />
+        <BottomStat deaths={deaths} recovered={recovered} loading={loading} />
         <select
           id='select-country'
           className='select'
