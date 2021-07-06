@@ -18,7 +18,7 @@ const styles = {
   },
 };
 
-const AppLoading = () => (
+export const AppLoading = () => (
   <div className='loading-wrapper' style={styles.loadingWrapper}>
     <img className='app-loading' src={ApploadingGIF} alt='' />
   </div>

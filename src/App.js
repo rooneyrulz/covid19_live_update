@@ -9,9 +9,7 @@ import Store from "./store";
 import Routes from "./components/routing/Routes";
 import AppHeader from "./layouts/AppHeader";
 import AppFooter from "./layouts/AppFooter";
-
-import path from "./assets/gif.gif";
-import Spinner from "./layouts/Spinner";
+import CountryFlag from "./components/CountryFlag";
 
 const App = () => {
   return (
@@ -23,7 +21,7 @@ const App = () => {
               <AppHeader />
             </header>
             <main className='App-main'>
-              <Spinner path={path} />
+              {/* <CountryFlag /> */}
               <Route component={Routes} />
             </main>
             <hr />

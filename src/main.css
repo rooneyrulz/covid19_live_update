@@ -132,7 +132,7 @@ select option {
 }
 
 .App-main .Dashboard {
-  margin-top: 4rem;
+  margin-top: 1rem;
   text-align: center;
 }
 
@@ -169,7 +169,7 @@ select option {
 }
 
 .App-main .LocalCases {
-  margin-top: 4rem;
+  margin-top: 1rem;
   text-align: center;
 }
 
@@ -182,12 +182,12 @@ select option {
 }
 
 .App-main .GlobalCases {
-  margin-top: 4rem;
+  margin-top: 1rem;
   text-align: center;
 }
 
 .App-main .GlobalCases .global-main {
-  margin: 4rem auto;
+  margin: 2rem auto;
 }
 
 .App-footer {

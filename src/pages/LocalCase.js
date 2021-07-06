@@ -11,6 +11,8 @@ import SelectOption from "../components/SelectOption";
 import HospitalStat from "../components/HospitalStat";
 import Chart from "../components/Chart";
 import Alert from "../layouts/Alert";
+import CountryFlag from "../components/CountryFlag";
+import SLFlag from "../assets/lk.png";
 
 const LocalCase = ({
   stat: { loading, allStats, hospitalStats },
@@ -65,6 +67,7 @@ const LocalCase = ({
         />
       </div>
       <div className='local-stats flow'>
+        <CountryFlag flag={SLFlag} />
         <h2 className='title'>Sri Lanka</h2>
         <TopStat
           cases={local_total_cases}

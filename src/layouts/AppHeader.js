@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import { BsBoxArrowInLeft } from "react-icons/bs";
 
 const AppHeader = () => {
   const location = useLocation();
@@ -10,7 +11,7 @@ const AppHeader = () => {
       {location.pathname !== "/" ? (
         <NavLink exact to='/'>
           {" "}
-          Go Back
+          <BsBoxArrowInLeft />
         </NavLink>
       ) : null}
     </>

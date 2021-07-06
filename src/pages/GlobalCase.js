@@ -13,6 +13,7 @@ import BottomStat from "../components/BottomStat";
 import SelectOption from "../components/SelectOption";
 import Chart from "../components/Chart";
 import Alert from "../layouts/Alert";
+import CountryFlag from "../components/CountryFlag";
 
 const GlobalCase = ({
   stats: { stats, stat, loading },
@@ -45,6 +46,7 @@ const GlobalCase = ({
       </div>
       <br />
       <div className='global-main flow'>
+        <CountryFlag />
         <h2 className='title'>{country}</h2>
         <TopStat cases={cases} active={active} loading={loading} />
         <BottomStat deaths={deaths} recovered={recovered} loading={loading} />
