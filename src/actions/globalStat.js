@@ -1,60 +1,55 @@
-import axios from 'axios';
+import { getAllCountriesStats, getAllStats, getCountryStats } from "services";
 import {
   GET_ALL_GLOBAL_STAT,
   GET_GLOBAL_STATS,
   GET_GLOBAL_STAT,
-  GET_ERROR,
-} from './types';
-
-const globalURI = 'https://corona.lmao.ninja';
+  GET_GLOBAL_ERROR,
+} from "./types";
 
 export const getSumOfStats = () => async (dispatch) => {
-  const config = {
-    header: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-    },
-  };
-
   try {
-    const { data } = await axios.get(`${globalURI}/v2/all`, config);
-    dispatch({ type: GET_ALL_GLOBAL_STAT, payload: data });
+    dispatch({ type: GET_ALL_GLOBAL_STAT, payload: await getAllStats });
   } catch (error) {
     console.log(error);
+    dispatch({
+      type: GET_GLOBAL_ERROR,
+      payload: {
+        status: 500,
+        message: error.message || "Something went wrong!",
+      },
+    });
   }
 };
 
 export const getAllStatsWithCountry = () => async (dispatch) => {
-  const config = {
-    header: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-    },
-  };
-
   try {
-    const { data } = await axios.get(`${globalURI}/v2/countries`, config);
-    dispatch({ type: GET_GLOBAL_STATS, payload: data });
+    dispatch({ type: GET_GLOBAL_STATS, payload: await getAllCountriesStats });
   } catch (error) {
     console.log(error);
+    dispatch({
+      type: GET_GLOBAL_ERROR,
+      payload: {
+        status: 500,
+        message: error.message || "Something went wrong!",
+      },
+    });
   }
 };
 
 export const getStatByCountry = (country) => async (dispatch) => {
-  const config = {
-    header: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-    },
-  };
-
   try {
-    const { data } = await axios.get(
-      `${globalURI}/v2/countries/${country}`,
-      config
-    );
-    dispatch({ type: GET_GLOBAL_STAT, payload: data });
+    dispatch({
+      type: GET_GLOBAL_STAT,
+      payload: await getCountryStats(country),
+    });
   } catch (error) {
     console.log(error);
+    dispatch({
+      type: GET_GLOBAL_ERROR,
+      payload: {
+        status: 500,
+        message: error.message || "Something went wrong!",
+      },
+    });
   }
 };

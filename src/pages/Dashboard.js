@@ -1,65 +1,63 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
+import React, { useEffect, useMemo } from "react";
 
 // REDUX
-import { connect } from "react-redux";
-import { getSumOfStats, getAllStatsWithCountry } from "../actions/globalStat";
+import { useDispatch, useSelector } from "react-redux";
+import { getSumOfStats, getAllStatsWithCountry } from "actions/globalStat";
 
-import TopStat from "../components/TopStat";
-import BottomStat from "../components/BottomStat";
-import DashboardAction from "../components/DashboardAction";
-import Chart from "../components/Chart";
-import Alert from "../layouts/Alert";
+// COMPONENTS
+import TopStat from "components/TopStat";
+import BottomStat from "components/BottomStat";
+import DashboardAction from "components/DashboardAction";
+import Chart from "components/Chart";
 
-const Dashboard = ({
-  stats: {
-    allStats: { cases, deaths, recovered },
+// LAYOUTS
+import Alert from "layouts/AlertContainer";
+
+const Dashboard = () => {
+  const {
     stats,
+    allStats: { cases, deaths, recovered },
     loading,
-  },
-  getSumOfStats,
-  getAllStatsWithCountry,
-}) => {
-  const [activeStats, setActiveStats] = useState(null);
-  const [newConfirmedStats, setNewConfirmedStats] = useState(null);
-  const [newDeathStats, setNewDeathStats] = useState(null);
+  } = useSelector((state) => state.globalStat);
+
+  const dispatch = useDispatch();
+
+  const totalCases = useMemo(() => {
+    if (!loading) {
+      const activeCases = stats
+        .map((stat) => stat.active)
+        .reduce((sum, num) => (sum += num), 0);
+
+      const newConfirmedStats = stats
+        .map((stat) => stat.todayCases)
+        .reduce((sum, num) => (sum += num), 0);
+
+      const newDeathStats = stats
+        .map((stat) => stat.todayDeaths)
+        .reduce((sum, num) => (sum += num), 0);
+
+      return {
+        activeCases,
+        newConfirmedStats,
+        newDeathStats,
+      };
+    }
+  }, [stats, loading]);
 
   useEffect(() => {
-    getSumOfStats();
-    getAllStatsWithCountry();
-
-    const activeCases = stats.map((stat) => stat.active);
-    const totalActiveCases = activeCases.reduce(
-      (sum, num) => (sum += num),
-      activeCases[0]
-    );
-
-    const newConfirmedStats = stats.map((stat) => stat.todayCases);
-    const totalTodayConfirmedStats = newConfirmedStats.reduce(
-      (sum, num) => (sum += num),
-      newConfirmedStats[0]
-    );
-
-    const newDeathStats = stats.map((stat) => stat.todayDeaths);
-    const totalTodayDeathStats = newDeathStats.reduce(
-      (sum, num) => (sum += num),
-      newDeathStats[0]
-    );
-
-    setActiveStats(loading ? null : totalActiveCases);
-    setNewConfirmedStats(loading ? null : totalTodayConfirmedStats);
-    setNewDeathStats(loading ? null : totalTodayDeathStats);
-  }, [getSumOfStats, getAllStatsWithCountry, loading, stats]);
+    dispatch(getSumOfStats());
+    dispatch(getAllStatsWithCountry());
+  }, [dispatch]);
 
   return (
     <div className='Dashboard'>
       <div className='alert-wrapper'>
-        <Alert type='confirmed' cases={newConfirmedStats} />
-        <Alert type='death' cases={newDeathStats} />
+        <Alert type='confirmed' cases={totalCases?.newConfirmedStats} />
+        <Alert type='death' cases={totalCases?.newDeathStats} />
       </div>
       <div className='dashboard-main flow'>
         <h2 className='title'>Global Stats</h2>
-        <TopStat cases={cases} active={activeStats} />
+        <TopStat cases={cases} active={totalCases?.activeStats} />
         <BottomStat deaths={deaths} recovered={recovered} />
         <DashboardAction />
       </div>
@@ -68,7 +66,7 @@ const Dashboard = ({
         <h2 className='title'>Statistics</h2>
         <Chart
           confirmed={cases}
-          active={activeStats}
+          active={totalCases?.activeStats}
           death={deaths}
           recovered={recovered}
         />
@@ -77,17 +75,4 @@ const Dashboard = ({
   );
 };
 
-Dashboard.propTypes = {
-  stats: PropTypes.object.isRequired,
-  getSumOfStats: PropTypes.func.isRequired,
-  getAllStatsWithCountry: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  stats: state.globalStat,
-});
-
-export default connect(mapStateToProps, {
-  getSumOfStats,
-  getAllStatsWithCountry,
-})(Dashboard);
+export default Dashboard;

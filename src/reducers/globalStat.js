@@ -2,15 +2,15 @@ import {
   GET_ALL_GLOBAL_STAT,
   GET_GLOBAL_STATS,
   GET_GLOBAL_STAT,
-  GET_ERROR
-} from '../actions/types';
+  GET_GLOBAL_ERROR,
+} from "../actions/types";
 
 const initialState = {
   loading: true,
   allStats: {},
   stats: [],
   stat: {},
-  statError: {}
+  statError: {},
 };
 
 export default (state = initialState, action) => {
@@ -21,28 +21,28 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        allStats: payload
+        allStats: payload,
       };
 
     case GET_GLOBAL_STATS:
       return {
         ...state,
         loading: false,
-        stats: payload
+        stats: payload,
       };
 
     case GET_GLOBAL_STAT:
       return {
         ...state,
         loading: false,
-        stat: payload
+        stat: payload,
       };
 
-    case GET_ERROR:
+    case GET_GLOBAL_ERROR:
       return {
         ...state,
         loading: false,
-        statError: payload
+        statError: payload,
       };
 
     default:

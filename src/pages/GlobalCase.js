@@ -1,39 +1,37 @@
-import React, { useState, useEffect, Fragment } from "react";
-import PropTypes from "prop-types";
+import React, { useEffect, Fragment, useMemo } from "react";
 
 // REDUX
-import { connect } from "react-redux";
-import {
-  getAllStatsWithCountry,
-  getStatByCountry,
-} from "../actions/globalStat";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllStatsWithCountry, getStatByCountry } from "actions/globalStat";
 
-import TopStat from "../components/TopStat";
-import BottomStat from "../components/BottomStat";
-import SelectOption from "../components/SelectOption";
-import Chart from "../components/Chart";
-import Alert from "../layouts/Alert";
-import CountryFlag from "../components/CountryFlag";
+import TopStat from "components/TopStat";
+import BottomStat from "components/BottomStat";
+import SelectOption from "components/SelectOption";
+import Chart from "components/Chart";
+import Alert from "layouts/AlertContainer";
+import CountryFlag from "components/CountryFlag";
 
-const GlobalCase = ({
-  stats: { stats, stat, loading },
-  getAllStatsWithCountry,
-  getStatByCountry,
-}) => {
-  const [countries, setCountries] = useState([]);
+const GlobalCase = () => {
+  const { stats, stat, loading } = useSelector((state) => state.globalStat);
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    getAllStatsWithCountry();
-    setCountries(() => (loading ? [] : stats.map((stat) => stat.country)));
-  }, [getAllStatsWithCountry, loading, stats]);
-
-  useEffect(() => {
-    getStatByCountry("USA");
-  }, [getStatByCountry]);
+  const countries = useMemo(() => {
+    if (!loading) {
+      return stats.map((stat) => stat.country) || [];
+    }
+  }, [loading, stats]);
 
   const onChange = (e) => {
-    getStatByCountry(e.target.value);
+    dispatch(getStatByCountry(e.target.value));
   };
+
+  useEffect(() => {
+    dispatch(getAllStatsWithCountry());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getStatByCountry("USA"));
+  }, [dispatch]);
 
   const { country, cases, deaths, recovered, active, todayCases, todayDeaths } =
     stat;
@@ -59,7 +57,7 @@ const GlobalCase = ({
             <option default={true} value='USA'>
               USA
             </option>
-            {countries.map((country) => (
+            {countries?.map((country) => (
               <SelectOption key={country} value={country} text={country} />
             ))}
           </Fragment>
@@ -79,17 +77,4 @@ const GlobalCase = ({
   );
 };
 
-GlobalCase.propTypes = {
-  stats: PropTypes.object.isRequired,
-  getAllStatsWithCountry: PropTypes.func.isRequired,
-  getStatByCountry: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  stats: state.globalStat,
-});
-
-export default connect(mapStateToProps, {
-  getAllStatsWithCountry,
-  getStatByCountry,
-})(GlobalCase);
+export default GlobalCase;

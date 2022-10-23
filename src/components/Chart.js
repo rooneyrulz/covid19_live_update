@@ -12,13 +12,13 @@ const Chart = ({ confirmed, death, recovered, active }) => {
         },
       ],
     },
-    labels: ["Confirmed", "Deaths", "Recovered", "Active"],
+    labels: [],
   });
 
   useEffect(() => {
-    setChartData({
-      ...chartData,
-      ...chartData.data,
+    setChartData((cd) => ({
+      ...cd,
+      ...cd.data,
       datasets: [
         {
           data: [confirmed, death, recovered, active],
@@ -36,7 +36,8 @@ const Chart = ({ confirmed, death, recovered, active }) => {
           ],
         },
       ],
-    });
+      labels: ["Confirmed", "Deaths", "Recovered", "Active"],
+    }));
   }, [confirmed, death, recovered, active]);
 
   return (

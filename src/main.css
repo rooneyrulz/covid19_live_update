@@ -20,10 +20,8 @@ h3 {
   color: #ffffff;
 }
 
-
-h4,
-.alert {
-  font-size: clamp(.8rem, calc(5vw+0.25rem), 1.8rem);
+h4 {
+  font-size: clamp(0.8rem, calc(5vw+0.25rem), 1.8rem);
   font-weight: 400;
   letter-spacing: 0.15rem;
   -webkit-transition: all 0.3s ease-in-out;
@@ -32,7 +30,9 @@ h4,
 
 .alert {
   min-width: 250px;
-  font-size: clamp(.65rem, calc(5vw+0.25rem), 1.8rem);
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.15rem;
 }
 
 p {
@@ -73,13 +73,14 @@ select option {
   color: #ffffff;
 }
 
-.flow>*+* {
+.flow > * + * {
   margin-top: 1rem;
 }
 
 .container {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
+  max-width: 940px;
 }
 
 .btn {
@@ -92,7 +93,8 @@ select option {
   -webkit-transition: opacity 0.3s linear, -webkit-transform 0.3s ease-in;
   transition: opacity 0.3s linear, -webkit-transform 0.3s ease-in;
   transition: transform 0.3s ease-in, opacity 0.3s linear;
-  transition: transform 0.3s ease-in, opacity 0.3s linear, -webkit-transform 0.3s ease-in;
+  transition: transform 0.3s ease-in, opacity 0.3s linear,
+    -webkit-transform 0.3s ease-in;
 }
 
 .btn:hover {

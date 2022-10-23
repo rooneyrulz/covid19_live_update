@@ -6,11 +6,7 @@ const CountryFlag = ({ flag }) => {
 
   return (
     <div className='flag-wrapper' style={styles.wrapper}>
-      <img
-        src={flag ? flag : stat?.countryInfo?.flag ?? ""}
-        alt=''
-        style={styles.img}
-      />
+      <img src={flag || stat?.countryInfo?.flag} alt='' style={styles.img} />
     </div>
   );
 };
@@ -22,7 +18,7 @@ const styles = {
   },
   img: {
     display: "inline-block",
-    maxWidth: "200px",
+    maxWidth: "450px",
   },
 };
 

@@ -1,14 +1,14 @@
 import {
   GET_ALL_LOCAL_STAT,
   GET_LOCAL_HOSPITAL_STATS,
-  GET_ERROR
-} from '../actions/types';
+  GET_LOCAL_ERROR,
+} from "../actions/types";
 
 const initialState = {
   loading: true,
   allStats: {},
   hospitalStats: [],
-  statError: {}
+  statError: {},
 };
 
 export default (state = initialState, action) => {
@@ -19,21 +19,21 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        allStats: payload
+        allStats: payload,
       };
 
     case GET_LOCAL_HOSPITAL_STATS:
       return {
         ...state,
         loading: false,
-        hospitalStats: payload
+        hospitalStats: payload,
       };
 
-    case GET_ERROR:
+    case GET_LOCAL_ERROR:
       return {
         ...state,
         loading: false,
-        statError: payload
+        statError: payload,
       };
 
     default:

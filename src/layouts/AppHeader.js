@@ -11,7 +11,7 @@ const AppHeader = () => {
       {location.pathname !== "/" ? (
         <NavLink exact to='/'>
           {" "}
-          <BsBoxArrowInLeft />
+          <BsBoxArrowInLeft style={{ scale: '1.5' }} />
         </NavLink>
       ) : null}
     </>
