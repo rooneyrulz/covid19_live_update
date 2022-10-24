@@ -1,4 +1,5 @@
-import React, { useEffect, Fragment, useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
+import Select from "react-select";
 
 // REDUX
 import { useSelector, useDispatch } from "react-redux";
@@ -6,7 +7,6 @@ import { getAllStatsWithCountry, getStatByCountry } from "actions/globalStat";
 
 import TopStat from "components/TopStat";
 import BottomStat from "components/BottomStat";
-import SelectOption from "components/SelectOption";
 import Chart from "components/Chart";
 import Alert from "layouts/AlertContainer";
 import CountryFlag from "components/CountryFlag";
@@ -15,15 +15,19 @@ const GlobalCase = () => {
   const { stats, stat, loading } = useSelector((state) => state.globalStat);
   const dispatch = useDispatch();
 
+  const [param, setParam] = React.useState({ value: "USA", label: "USA" });
+
   const countries = useMemo(() => {
     if (!loading) {
       return stats.map((stat) => stat.country) || [];
     }
   }, [loading, stats]);
 
-  const onChange = (e) => {
-    dispatch(getStatByCountry(e.target.value));
-  };
+  const onChange = (country) => setParam(country);
+
+  useEffect(() => {
+    dispatch(getStatByCountry(param.value));
+  }, [param, dispatch]);
 
   useEffect(() => {
     dispatch(getAllStatsWithCountry());
@@ -48,20 +52,15 @@ const GlobalCase = () => {
         <h2 className='title'>{country}</h2>
         <TopStat cases={cases} active={active} loading={loading} />
         <BottomStat deaths={deaths} recovered={recovered} loading={loading} />
-        <select
+        <Select
           id='select-country'
           className='select'
-          onChange={(e) => onChange(e)}
-        >
-          <Fragment>
-            <option default={true} value='USA'>
-              USA
-            </option>
-            {countries?.map((country) => (
-              <SelectOption key={country} value={country} text={country} />
-            ))}
-          </Fragment>
-        </select>
+          isSearchable={true}
+          isLoading={loading}
+          defaultValue={param}
+          onChange={onChange}
+          options={countries?.map((c) => ({ value: c, label: c })) ?? []}
+        />
       </div>
       <hr />
       <div className='global-statistic statistic flow'>
